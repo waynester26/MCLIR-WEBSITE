@@ -1,0 +1,83 @@
+{
+  "summary": "Iteration 5 frontend-only test focused on browser-language auto-detection in i18n.jsx (detectInitialLang). Verified DE/GA auto-detect, EN fallback for unsupported locales, user override via localStorage, navigator.languages priority order, and full regression across 8 routes. All 6 scenarios passed with zero console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "auto_detect_de": {
+      "navigator_languages": ["de-DE", "de"],
+      "no_localStorage": true,
+      "html_lang": "de",
+      "active_picker_button": "header-lang-picker-de",
+      "nav_text_observed": "Startseite Produkte Tierfütterung Prozess Markteinblicke Kontakt",
+      "passed": true
+    },
+    "auto_detect_ga": {
+      "navigator_languages": ["ga-IE", "ga"],
+      "no_localStorage": true,
+      "html_lang": "ga",
+      "active_picker_button": "header-lang-picker-ga",
+      "nav_text_observed": "Baile Táirgí Beathú Ainmhithe Próiseas Léargas Margaidh Teagmháil",
+      "passed": true
+    },
+    "fallback_en_fr": {
+      "navigator_languages": ["fr-FR", "fr"],
+      "html_lang": "en",
+      "active_picker_button": "header-lang-picker-en",
+      "passed": true
+    },
+    "fallback_en_es": {
+      "navigator_languages": ["es-ES", "es"],
+      "html_lang": "en",
+      "active_picker_button": "header-lang-picker-en",
+      "passed": true
+    },
+    "user_override_wins": {
+      "navigator_languages": ["de-DE", "de"],
+      "preset_localStorage_mclir_lang": "ga",
+      "html_lang": "ga",
+      "active_picker_button": "header-lang-picker-ga",
+      "localStorage_after": "ga",
+      "note": "Saved choice (ga) wins over auto-detect (de). Confirmed.",
+      "passed": true
+    },
+    "navigator_languages_priority": {
+      "navigator_languages": ["en-US", "de-DE", "ga-IE"],
+      "html_lang": "en",
+      "active_picker_button": "header-lang-picker-en",
+      "note": "First match in array wins — EN picked over DE/GA.",
+      "passed": true
+    },
+    "regression_routes_zero_console_errors": {
+      "/": 0,
+      "/liquid": 0,
+      "/granulates": 0,
+      "/water-soluble-powder": 0,
+      "/animal-feeding": 0,
+      "/manufacturing": 0,
+      "/market-insights": 0,
+      "/contact": 0
+    },
+    "auto_detect_tests_passed": "6/6",
+    "console_errors_total": 0
+  },
+  "test_methodology": "Used Playwright browser.new_context() per scenario plus page.add_init_script() to override navigator.language and navigator.languages before navigation. Each scenario used a fresh context (no shared localStorage). Active state verified via 'bg-kelp-600' class on the data-testid='header-lang-picker-{en|de|ga}' button.",
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "detectInitialLang() in /app/frontend/src/i18n/i18n.jsx is correctly implemented: localStorage takes precedence, then navigator.languages iterated in order with base-code split('-')[0], finally 'en' fallback. SUPPORTED set ['en','de','ga'] matches LANGS. Try/catch around localStorage handles SSR/private mode.",
+    "Minor (non-blocking, carried over from iter 4): MobileMenu still mounts a duplicate LanguagePicker (testid 'mobile-lang-picker'). Header picker is now visible at all viewports, so the in-panel one is redundant — design choice, not a bug.",
+    "Minor: detectInitialLang is passed to useState as a function reference (lazy initializer) — correct. document.documentElement.lang is also synced in a useEffect on mount, ensuring SSR safety."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped)", "frontend": "100%"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 5 verified detectInitialLang() auto-detection logic. Test pattern: use browser.new_context() + page.add_init_script() with Object.defineProperty on navigator.languages/language BEFORE goto. localStorage preset must be done in the same init script to apply pre-mount. All 6 scenarios + 8-route regression passed cleanly. No bugs found.",
+  "rca of the issue": "n/a — feature works as specified."
+}

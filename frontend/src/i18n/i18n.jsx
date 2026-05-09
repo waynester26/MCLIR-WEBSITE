@@ -17,14 +17,29 @@ export const LANGS = [
     { code: "ga", label: "GA", name: "Gaeilge" },
 ];
 
-export function LanguageProvider({ children }) {
-    const [lang, setLangState] = useState(() => {
-        try {
-            return localStorage.getItem("mclir_lang") || "en";
-        } catch {
-            return "en";
+const SUPPORTED = ["en", "de", "ga"];
+
+function detectInitialLang() {
+    try {
+        const saved = localStorage.getItem("mclir_lang");
+        if (saved && SUPPORTED.includes(saved)) return saved;
+    } catch { /* localStorage may be unavailable (SSR / private mode) */ }
+
+    if (typeof navigator !== "undefined") {
+        // navigator.languages is preferred; fall back to navigator.language.
+        const candidates = (navigator.languages && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || "en"]).map((l) => (l || "").toLowerCase());
+        for (const c of candidates) {
+            const base = c.split("-")[0];
+            if (SUPPORTED.includes(base)) return base;
         }
-    });
+    }
+    return "en";
+}
+
+export function LanguageProvider({ children }) {
+    const [lang, setLangState] = useState(detectInitialLang);
     const setLang = (l) => {
         setLangState(l);
         try { localStorage.setItem("mclir_lang", l); } catch (_e) { /* noop */ }
