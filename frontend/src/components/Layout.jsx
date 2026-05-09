@@ -162,9 +162,7 @@ export default function Layout({ children }) {
                     </Link>
                     <DesktopMenu />
                     <div className="flex items-center gap-3">
-                        <div className="hidden md:block">
-                            <LanguagePicker testid="header-lang-picker" />
-                        </div>
+                        <LanguagePicker testid="header-lang-picker" />
                         <Link
                             to="/contact"
                             className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
