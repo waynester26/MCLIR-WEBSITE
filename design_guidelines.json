@@ -1,0 +1,93 @@
+{
+  "theme": "Dark",
+  "archetype": "Organic & Earthy mixed with Jewel & Luxury (Premium B2B Ocean/Earth)",
+  "color_palette": {
+    "background_primary": "#050B14",
+    "background_secondary": "#0A1628",
+    "primary_brand": "#2E5C42",
+    "primary_brand_hover": "#3C7A58",
+    "accent_ocean": "#1A365D",
+    "accent_earth": "#8B5A2B",
+    "accent_premium": "#D4AF37",
+    "text_primary": "#F8FAFC",
+    "text_secondary": "#94A3B8",
+    "border_color": "#1E293B"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Manrope",
+    "mono_font": "IBM Plex Mono",
+    "rules": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none text-text_primary font-serif",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight leading-tight text-text_primary font-serif",
+      "h3": "text-xl sm:text-2xl leading-snug text-text_primary font-serif",
+      "body": "text-base leading-relaxed text-text_secondary font-sans",
+      "labels_and_overline": "text-xs tracking-[0.2em] uppercase font-mono text-text_secondary"
+    }
+  },
+  "spacing_and_rhythm": {
+    "general": "Generous spacing. p-8 to p-24 for section paddings.",
+    "containers": "Use max-w-7xl mx-auto for main content limits. Grid layouts must have wide gaps (gap-8 to gap-12).",
+    "grid_bento": "Asymmetric grids for marketing sections (e.g., col-span-8 and col-span-4).",
+    "grid_technical": "Dense, precise 1px borders (border-collapse) for data panels."
+  },
+  "motion_specs": {
+    "hover_states": "transition-all duration-300 ease-out. Slight lift (-translate-y-1) for cards. Text color shifts to a brighter tint on hover.",
+    "page_load": "Staggered fade-ins (opacity-0 to opacity-100, translate-y-4 to translate-y-0) for hero and grid items.",
+    "charts": "Recharts default animations allowed, ensure smooth tooltips."
+  },
+  "component_patterns": {
+    "navbar": "Sticky top (z-50). Crystal Glassmorphism: backdrop-blur-xl bg-[#050B14]/70 border-b border-white/10. Mega-menu for product families.",
+    "hero": "Full height or min-h-[80vh]. Background image with bg-[#050B14]/60 overlay. High contrast serif typography. Left aligned content.",
+    "product_cards": "Grid Borders (Technical Look). 1px border border-white/10. Flat background. Hover: slight lift, border color shifts to primary_brand (#2E5C42).",
+    "technical_spec_panels": "Certificate style. Use monospace font for data. border-collapse, alternating row backgrounds (bg-white/5), rigorous alignment.",
+    "comparison_tables": "Shadcn Table component. Clean 1px borders, sticky headers if scrollable, monochrome palette for data rows with primary color highlighting the 'Superior' traits.",
+    "timeline": "Manufacturing Process. Vertical line with staggered alternating nodes. Nodes have glowing dots (ring-4 ring-primary_brand/30 bg-primary_brand).",
+    "charts": "Recharts. Bar and Donut charts. Use #2E5C42 (Kelp), #1A365D (Ocean), #8B5A2B (Earth), and #D4AF37 (Premium) for data series. Minimal grid lines (stroke #1E293B).",
+    "testimonials": "Editorial bento grid. Use large quote marks in serif font. Author details in monospace or clean sans.",
+    "faq": "Shadcn Accordion. Minimalist. 1px bottom border per item. Plus/minus icon animations.",
+    "contact": "Solid background container. Large typography for email (McLir@Sea-Weed.DE). Clean text links. Address cleanly formatted."
+  },
+  "specific_guidance": {
+    "liquid_bottle_styling": "To make the bottle feel premium and clearer: Use a dark container (bg-gradient-to-br from-[#0A1628] to-[#050B14]). Add an inner glow (shadow-[inset_0_0_40px_rgba(46,92,66,0.15)]). If using a 2D image, wrap it in a container with a subtle glass effect (backdrop-blur-md) and a 1px border of white/10. Typography around the product must be high-end serif.",
+    "granulate_styling": "To make granulate feel natural and appealing: Use warm earthy backgrounds (bg-[#1A1412] or deep umber). Add a subtle noise/grain texture overlay (using CSS mix-blend-mode or a noise SVG pattern) to the section to evoke physical soil/particles. Use soft-rounded or pill-shaped containers for product stats to offset the harshness."
+  },
+  "imagery_direction": {
+    "general": "Cinematic, deep shadows, professional agricultural corporate photography. Atlantic ocean, kelp forests, healthy livestock, sterile labs, and stainless steel factory.",
+    "hero_and_ocean": "Use dark, dramatic ocean/kelp imagery. Max overlay bg-black/50.",
+    "livestock": "Healthy dairy cows on pasture, natural lighting.",
+    "lab_and_factory": "Clean, technical, cool-toned lighting to contrast with organic elements."
+  },
+  "image_urls": {
+    "ocean_kelp_1": {
+      "url": "https://images.unsplash.com/photo-1697817315238-788e8a16def4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHw0fHxhdGxhbnRpYyUyMG9jZWFuJTIwa2VscCUyMHNlYXdlZWR8ZW58MHx8fHwxNzc4MzI2MjA4fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Rocky beach with seaweed, good for raw material context",
+      "category": "Process / Raw Material"
+    },
+    "ocean_kelp_2": {
+      "url": "https://images.unsplash.com/photo-1579888442608-e76cc3d70e22?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwyfHxhdGxhbnRpYyUyMG9jZWFuJTIwa2VscCUyMHNlYXdlZWR8ZW58MHx8fHwxNzc4MzI2MjA4fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Bird flying over sea, good for hero/atmospheric background",
+      "category": "Hero / Background"
+    },
+    "cows_pasture_1": {
+      "url": "https://images.unsplash.com/photo-1659148566517-9dfe52f802ac?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwzfHxkYWlyeSUyMGNvd3MlMjBwYXN0dXJlfGVufDB8fHx8MTc3ODMyNjIwOHww&ixlib=rb-4.1.0&q=85",
+      "description": "Cows resting in a field, healthy livestock",
+      "category": "Animal Feeding / Livestock"
+    },
+    "cows_pasture_2": {
+      "url": "https://images.unsplash.com/photo-1708332056801-9dfbf8063b10?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwyfHxkYWlyeSUyMGNvd3MlMjBwYXN0dXJlfGVufDB8fHx8MTc3ODMyNjIwOHww&ixlib=rb-4.1.0&q=85",
+      "description": "Herd of cattle in dry grass, good for showing agriculture application",
+      "category": "Animal Feeding / Livestock"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly use the defined color palette to maintain the dark, moody, premium oceanic aesthetic. DO NOT USE PURPLE OR VIOLET.",
+    "Implement React Router for all requested pages (Home, Liquid Seaweed Products, Granulates, Animal Feeding, Process, Insights, Contact).",
+    "Use standard HTML tags and Tailwind for layout and grid structure, saving Shadcn components for complex interactive pieces (Accordion, Tables).",
+    "Include 'data-testid' on every button, link, and interactive widget to ensure automated testing support.",
+    "Make the Liquid Bottle Product showcase distinct using the inner shadow/glow CSS rules specified in specific_guidance.",
+    "Make the Granulate Product showcase distinct using the warm earth background and noise overlay rules specified in specific_guidance.",
+    "Use Recharts for Market Insights section. Ensure it looks clean on dark mode, using minimal gridlines and brand colors.",
+    "The typography must feel editorial and natural: use 'Cormorant Garamond' (serif) for headings and 'Manrope' (sans) for body text."
+  ]
+}
