@@ -6,12 +6,18 @@ import { LIQUID_PRODUCTS, BRAND } from "@/data/content";
 function ProductPanel({ p }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
-            {/* Visual — premium liquid vessel */}
+            {/* Visual — premium liquid vessel with kelp backdrop */}
             <div className="lg:col-span-5">
                 <div className="liquid-vessel rounded-3xl p-8 h-full flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.18),transparent_60%)]" />
+                    <img
+                        src="https://images.unsplash.com/photo-1567001847230-ed5da95bd055?auto=format&fit=crop&w=900&q=80"
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover opacity-35"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/55 via-[#050B14]/70 to-[#050B14]/95" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.32),transparent_60%)]" />
                     <div className="relative z-10 text-center">
-                        <div className="mx-auto w-40 h-72 rounded-[2rem] bg-gradient-to-b from-kelp-700 via-[#0F2A1B] to-[#050B14] border border-white/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.6)] relative">
+                        <div className="mx-auto w-40 h-72 rounded-[2rem] bg-gradient-to-b from-kelp-700 via-[#0F2A1B] to-[#050B14] border border-white/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7)] relative">
                             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-3 rounded-sm bg-[#0A1628] border border-white/10" />
                             <div className="absolute top-7 left-1/2 -translate-x-1/2 w-24 h-6 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center">
                                 <span className="font-mono text-[9px] tracking-[0.25em] text-kelp-400">McLIR</span>
@@ -24,7 +30,7 @@ function ProductPanel({ p }) {
                             </div>
                             <div className="absolute inset-x-4 inset-y-16 rounded-xl bg-gradient-to-b from-kelp-500/30 to-kelp-700/40 blur-md opacity-60" />
                         </div>
-                        <div className="mt-6 eyebrow">100 % Ascophyllum nodosum · Atlantic origin</div>
+                        <div className="mt-6 eyebrow text-slate-200">100 % Ascophyllum nodosum · Atlantic origin</div>
                     </div>
                 </div>
             </div>

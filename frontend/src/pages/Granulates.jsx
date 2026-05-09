@@ -42,8 +42,15 @@ export default function Granulates() {
                     <div className="grid lg:grid-cols-12 gap-10">
                         <div className="lg:col-span-5">
                             <div className="rounded-3xl bg-gradient-to-br from-[#2A1A0F] to-[#0E0B09] border border-amber-500/15 p-8 h-full relative overflow-hidden">
+                                <img
+                                    src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=80"
+                                    alt=""
+                                    className="absolute inset-0 w-full h-full object-cover opacity-25"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#1A1412]/85 via-[#0E0B09]/80 to-[#0E0B09]/95" />
+                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,90,43,0.18),transparent_55%)]" />
                                 {/* Decorative granule cluster */}
-                                <div className="aspect-[4/5] relative flex items-center justify-center">
+                                <div className="aspect-[4/5] relative z-10 flex items-center justify-center">
                                     <div className="grid grid-cols-7 gap-1.5 rotate-[-8deg]">
                                         {Array.from({ length: 49 }).map((_, i) => {
                                             const sizes = idx === 0 ? [10, 13, 16, 12] : [7, 9, 8, 10];
@@ -65,7 +72,7 @@ export default function Granulates() {
                                         })}
                                     </div>
                                 </div>
-                                <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/50 border border-amber-500/20 text-center">
+                                <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/60 border border-amber-500/20 text-center backdrop-blur-sm">
                                     <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-amber-200/70">
                                         McLIR Granulate
                                     </div>

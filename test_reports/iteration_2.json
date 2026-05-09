@@ -1,0 +1,67 @@
+{
+  "summary": "Frontend-only iteration 2 testing. Verified all photographic backgrounds (FBAM ice, kelp on /liquid + dry-meal donut, ocean on WSP, soil on both granulate panels) load and render with naturalWidth>0. New Recharts donut (7 sectors + 7 legend rows) and bar chart (8 species bars) render correctly under data-testid 'feed-composition-donut' and 'feed-dose-bar'. Plus Jakarta Sans is loaded across all inner pages (visible in document.fonts) and applied to .eyebrow elements via computed style. Sub-nav anchors scroll correctly, liquid tabs swap, FAQ accordion toggles, mailto links use McLir@Sea-Weed.DE. No console errors, no broken images.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "document.fonts.check('1em \"Plus Jakarta Sans\"') returns false because the @import only ships weights 500/600/700/800 — calling check() with default weight 400 misses; check('500 12px \"Plus Jakarta Sans\"') returns true and font is enumerated in document.fonts. This is a benign quirk, not a bug.",
+    "All four decorative panel photos load with naturalWidth=900 (or 1600 for the wide cows pasture). All <img> alt attributes are empty strings (decorative) — appropriate.",
+    "AnimalFeeding.jsx is now ~565 lines with two embedded charts; consider splitting COMPOSITION_PIE/FEEDING_BAR + chart components into /src/components/feed-charts.jsx for maintainability if more visualisations are added.",
+    "FBAM panel correctly stacks: photo → dark gradient → radial highlight → snowflake decorations → text content. Text contrast is good (white on darkened photo)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "test_credentials": "N/A (no auth)",
+  "seed_data_creation": "None — pure static frontend",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 2 verified. Photo URLs in use: FBAM ice photo-1551582045-6ec9c11d8697, kelp/ocean photo-1567001847230-ed5da95bd055 (used on /liquid AND /animal-feeding dry-meal donut backdrop), WSP photo-1697817315238-788e8a16def4, granulate soil photo-1466692476868-aef1dfb1e735, cows pasture photo-1659148566517-9dfe52f802ac (hero + feeding-dose bar backdrop). Recharts donut renders 7 path sectors + 7 legend <li>; bar chart renders 8 species bars (16 path elements counted because each Bar produces a <path> + label group). Sub-nav requires clicking anchor (page.click('[data-testid=\"feed-subnav-{id}\"]')) instead of relying on hash navigation. Plus Jakarta Sans loaded with weights 500-800; use check('500 12px ...') not check('1em ...').",
+  "detailed_verifications": {
+    "animal_feeding": {
+      "fbam_photo_naturalWidth": 900,
+      "fbam_text_contains_minus_18C": true,
+      "fbam_eyebrow_FBAM_FrozenBlock_visible": true,
+      "fbam_caption_peak_nutrient_retention": true,
+      "snowflake_decorations": 2,
+      "donut_sectors": 7,
+      "donut_legend_items": 7,
+      "donut_components": ["Carbohydrates", "Dietary fibre", "Alginic acid", "Ash", "Sugar", "Protein", "Fat"],
+      "feeding_bar_species_count": 8,
+      "feeding_bar_background_img_naturalWidth": 1600,
+      "subnav_anchors_clickable": true
+    },
+    "liquid": {
+      "kelp_photo_loaded": true,
+      "kelp_photo_src_prefix_match": true,
+      "tabs_swap": true,
+      "spec_table_visible": true
+    },
+    "wsp": {
+      "ocean_photo_loaded": true,
+      "ocean_photo_src_prefix_match": true,
+      "tech_specs_visible": true
+    },
+    "granulates": {
+      "panel_count_with_soil_photo": 2,
+      "soil_photo_src_prefix_match": true,
+      "granule_cluster_visible": true
+    },
+    "fonts": {
+      "plus_jakarta_sans_in_document_fonts": true,
+      "applied_to_eyebrow_class_all_pages": ["/liquid", "/water-soluble-powder", "/granulates", "/animal-feeding", "/manufacturing", "/market-insights", "/contact"],
+      "computed_style_value": "\"Plus Jakarta Sans\", system-ui, sans-serif"
+    },
+    "regression": {
+      "faq_accordion_toggles_aria_expanded": "false -> true",
+      "home_mailto_links": 3,
+      "all_mailto_use_McLir_email": true,
+      "broken_images_on_animal_feeding": 0,
+      "console_errors": 0
+    }
+  }
+}

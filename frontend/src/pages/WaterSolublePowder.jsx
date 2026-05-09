@@ -17,10 +17,16 @@ export default function WaterSolublePowder() {
                         <p className="mt-6 text-slate-400 text-lg leading-relaxed max-w-2xl">{WSP.summary}</p>
                     </div>
                     <div className="lg:col-span-5">
-                        <div className="liquid-vessel rounded-3xl p-8 h-full flex flex-col items-center justify-center relative">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.15),transparent_60%)]" />
+                        <div className="liquid-vessel rounded-3xl p-8 h-full flex flex-col items-center justify-center relative overflow-hidden">
+                            <img
+                                src="https://images.unsplash.com/photo-1697817315238-788e8a16def4?auto=format&fit=crop&w=900&q=80"
+                                alt=""
+                                className="absolute inset-0 w-full h-full object-cover opacity-30"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/55 via-[#050B14]/75 to-[#050B14]/95" />
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.28),transparent_60%)]" />
                             <div className="relative z-10 text-center">
-                                <div className="mx-auto w-44 h-56 rounded-2xl bg-gradient-to-b from-[#1A2A1F] to-[#070E08] border border-white/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.6)] flex items-center justify-center">
+                                <div className="mx-auto w-44 h-56 rounded-2xl bg-gradient-to-b from-[#1A2A1F] to-[#070E08] border border-white/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7)] flex items-center justify-center">
                                     <div className="text-center px-3">
                                         <div className="font-mono text-[9px] tracking-[0.3em] uppercase text-kelp-400">McLir</div>
                                         <div className="font-serif text-2xl text-white mt-1 leading-tight">Water Soluble<br />Powder</div>
@@ -28,7 +34,7 @@ export default function WaterSolublePowder() {
                                         <div className="mt-3 font-mono text-[10px] text-slate-400">25 kg net</div>
                                     </div>
                                 </div>
-                                <div className="mt-5 eyebrow">Spray-dried · Ascophyllum nodosum</div>
+                                <div className="mt-5 eyebrow text-slate-200">Spray-dried · Ascophyllum nodosum</div>
                             </div>
                         </div>
                     </div>
