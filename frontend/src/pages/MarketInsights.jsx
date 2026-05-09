@@ -11,29 +11,27 @@ import {
     PieChart,
     Pie,
     Cell,
-    Legend,
 } from "recharts";
 import { MARKET_BY_REGION, BUYER_SEGMENTS, BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 const PIE_COLORS = ["#2E5C42", "#1A365D", "#8B5A2B", "#D4AF37", "#5A9A78"];
 
 export default function MarketInsights() {
+    const t = useT();
     return (
         <div className="pt-12 pb-32" data-testid="insights-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8">
                 <Link to="/" className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white" data-testid="insights-back">
-                    ← McLir Seaweed
+                    {t("cta.back_brand")}
                 </Link>
                 <div className="mt-5">
-                    <div className="eyebrow">Market insights</div>
+                    <div className="eyebrow">{t("page.insights.eyebrow")}</div>
                     <h1 className="mt-3 font-serif text-5xl sm:text-6xl leading-[1] tracking-tight max-w-4xl">
-                        Ireland is a small market. Europe and the world are not.
+                        {t("market.title")}
                     </h1>
                     <p className="mt-5 text-slate-400 text-lg leading-relaxed max-w-3xl">
-                        Two charts to size the opportunity for distributors, partners and investors. Asia-Pacific
-                        dominates global seaweed demand by volume. Five buyer categories — biostimulants, animal feed,
-                        food, cosmetics and nutraceuticals — split the value pie. McLir is built around the two largest:
-                        agriculture and animal nutrition.
+                        {t("market.body")}
                     </p>
                 </div>
 

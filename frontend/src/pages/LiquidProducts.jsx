@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Droplet, Beaker, FileText, Package, Clock, ShieldCheck } from "lucide-react";
 import { LIQUID_PRODUCTS, BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 function ProductPanel({ p }) {
     return (
@@ -134,6 +135,7 @@ function ProductPanel({ p }) {
 }
 
 export default function LiquidProducts() {
+    const t = useT();
     const [active, setActive] = useState(LIQUID_PRODUCTS[0].slug);
     const product = LIQUID_PRODUCTS.find((p) => p.slug === active);
 
@@ -141,15 +143,13 @@ export default function LiquidProducts() {
         <div className="pt-12 pb-32" data-testid="liquid-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8">
                 <Link to="/" className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white" data-testid="liquid-back">
-                    ← McLir Seaweed
+                    {t("cta.back_brand")}
                 </Link>
                 <h1 className="mt-5 font-serif text-5xl sm:text-6xl leading-[1] tracking-tight">
-                    Liquid Seaweed Products
+                    {t("page.liquid.title")}
                 </h1>
                 <p className="mt-5 max-w-3xl text-slate-400 text-lg leading-relaxed">
-                    Five distinct liquid formats from a single Atlantic raw material. Cold-pressed for the most native
-                    profile, alkaline-extracted for maximum soluble solids, aqueous-extracted for residue-conscious
-                    growers, and a spray-dried equivalent for export-efficient logistics.
+                    {t("page.liquid.intro")}
                 </p>
 
                 {/* Selector tabs */}

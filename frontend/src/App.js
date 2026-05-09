@@ -1,5 +1,6 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "@/i18n/i18n";
 import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import LiquidProducts from "@/pages/LiquidProducts";
@@ -13,21 +14,23 @@ import Contact from "@/pages/Contact";
 function App() {
     return (
         <div className="App">
-            <BrowserRouter>
-                <Layout>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/liquid" element={<LiquidProducts />} />
-                        <Route path="/granulates" element={<Granulates />} />
-                        <Route path="/water-soluble-powder" element={<WaterSolublePowder />} />
-                        <Route path="/animal-feeding" element={<AnimalFeeding />} />
-                        <Route path="/manufacturing" element={<ManufacturingProcess />} />
-                        <Route path="/market-insights" element={<MarketInsights />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="*" element={<Home />} />
-                    </Routes>
-                </Layout>
-            </BrowserRouter>
+            <LanguageProvider>
+                <BrowserRouter>
+                    <Layout>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/liquid" element={<LiquidProducts />} />
+                            <Route path="/granulates" element={<Granulates />} />
+                            <Route path="/water-soluble-powder" element={<WaterSolublePowder />} />
+                            <Route path="/animal-feeding" element={<AnimalFeeding />} />
+                            <Route path="/manufacturing" element={<ManufacturingProcess />} />
+                            <Route path="/market-insights" element={<MarketInsights />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="*" element={<Home />} />
+                        </Routes>
+                    </Layout>
+                </BrowserRouter>
+            </LanguageProvider>
         </div>
     );
 }

@@ -1,69 +1,43 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Droplets, Sprout, FlaskConical, Beef, Factory, BarChart3, Mail, ChevronRight, Leaf, ShieldCheck, Globe2 } from "lucide-react";
+import { ArrowRight, Droplets, Sprout, FlaskConical, Beef, BarChart3, Mail, ChevronRight, Leaf, ShieldCheck, Globe2 } from "lucide-react";
 import { BRAND, HERO_IMG, FAQS } from "@/data/content";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useT } from "@/i18n/i18n";
 
-const FAMILIES = [
-    {
-        to: "/liquid",
-        eyebrow: "Liquid range",
-        title: "Liquid Seaweed",
-        copy: "Cold-press and Superior 20 / 30 extracts — alkaline, aqueous and spray-dried formats for foliar and fertigation.",
-        icon: Droplets,
-        accent: "from-ink-700 to-ink-900",
-    },
-    {
-        to: "/granulates",
-        eyebrow: "Soil & turf",
-        title: "Granulates & Soil Conditioner",
-        copy: "Slow-release dried Ascophyllum granules and graded seaweed meal — broadcast, blend, coat or top-dress.",
-        icon: Sprout,
-        accent: "from-earth-900 to-[#0E0B09]",
-    },
-    {
-        to: "/water-soluble-powder",
-        eyebrow: "Soluble solids",
-        title: "Water Soluble Powder",
-        copy: "Spray-dried extract that dissolves cold — designed for tank-mix, fertigation and industrial blending.",
-        icon: FlaskConical,
-        accent: "from-ink-700 to-ink-900",
-    },
-    {
-        to: "/animal-feeding",
-        eyebrow: "Animal nutrition",
-        title: "Animal Feeding",
-        copy: "Fresh-frozen FBAM and dry seaweed meal — a natural multimineral feed material for livestock, equine and pets.",
-        icon: Beef,
-        accent: "from-kelp-700 to-ink-900",
-    },
-];
+const useFamilies = () => {
+    const t = useT();
+    return [
+        { to: "/liquid", eyebrow: t("fam.liquid.eyebrow"), title: t("fam.liquid.title"), copy: t("fam.liquid.body"), icon: Droplets, accent: "from-ink-700 to-ink-900" },
+        { to: "/granulates", eyebrow: t("fam.granulates.eyebrow"), title: t("fam.granulates.title"), copy: t("fam.granulates.body"), icon: Sprout, accent: "from-earth-900 to-[#0E0B09]" },
+        { to: "/water-soluble-powder", eyebrow: t("fam.wsp.eyebrow"), title: t("fam.wsp.title"), copy: t("fam.wsp.body"), icon: FlaskConical, accent: "from-ink-700 to-ink-900" },
+        { to: "/animal-feeding", eyebrow: t("fam.feeding.eyebrow"), title: t("fam.feeding.title"), copy: t("fam.feeding.body"), icon: Beef, accent: "from-kelp-700 to-ink-900" },
+    ];
+};
 
-const PILLARS = [
-    {
-        icon: Leaf,
-        title: "Native bioactives, intact",
-        body: "Cold and low-temperature processes preserve auxins, cytokinins, betaines and alginates — the seaweed chemistry the soil and the rumen actually recognise.",
-    },
-    {
-        icon: ShieldCheck,
-        title: "Traceable, batch by batch",
-        body: "Every delivery is logged on arrival and every bag is batch-numbered, so any finished product can be walked back to a single Atlantic harvest.",
-    },
-    {
-        icon: Globe2,
-        title: "Built for export",
-        body: "Pallet-ready 20 kg / 25 kg formats, 1 t big-bags and IBC liquids — moving daily out of Plombières to mills, growers and distributors across Europe.",
-    },
-];
+const usePillars = () => {
+    const t = useT();
+    return [
+        { icon: Leaf, title: t("pillars.bio.title"), body: t("pillars.bio.body") },
+        { icon: ShieldCheck, title: t("pillars.trace.title"), body: t("pillars.trace.body") },
+        { icon: Globe2, title: t("pillars.export.title"), body: t("pillars.export.body") },
+    ];
+};
 
-const STATS = [
-    { v: "+15%", k: "Average yield uplift across grower trials" },
-    { v: "100%", k: "Atlantic Ascophyllum nodosum, single species" },
-    { v: "75 °C", k: "Maximum drying temperature — nutrient-safe" },
-    { v: "12 wk", k: "Granulate slow-release activity in soil" },
-];
+const useStats = () => {
+    const t = useT();
+    return [
+        { v: "+15%", k: t("stats.yield") },
+        { v: "100%", k: t("stats.species") },
+        { v: "75 °C", k: t("stats.drying") },
+        { v: "12 wk", k: t("stats.release") },
+    ];
+};
 
 export default function Home() {
+    const t = useT();
+    const FAMILIES = useFamilies();
+    const PILLARS = usePillars();
+    const STATS = useStats();
     return (
         <div data-testid="home-page">
             {/* HERO */}
@@ -76,19 +50,17 @@ export default function Home() {
                 <div className="relative max-w-7xl mx-auto px-5 lg:px-8 pb-20 pt-32 w-full">
                     <div className="max-w-3xl">
                         <div className="eyebrow rise" data-testid="hero-eyebrow">
-                            McLir Seaweed · Atlantic origin · Belgium-based operation
+                            {t("hero.eyebrow")}
                         </div>
                         <h1
                             className="rise-d1 mt-5 font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-white"
                             data-testid="hero-title"
                         >
-                            Grown by the sea.<br />
-                            <span className="text-kelp-400 italic">Trusted</span> by the soil and the herd.
+                            {t("hero.title.line1")}<br />
+                            <span className="text-kelp-400 italic">{t("hero.title.italic")}</span> {t("hero.title.line2_en")}
                         </h1>
                         <p className="rise-d2 mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed" data-testid="hero-sub">
-                            McLir Seaweed refines Atlantic <em>Ascophyllum nodosum</em> into liquid concentrates, granulates,
-                            spray-dried powders and a complete animal-feed range. One species. One ocean. Four
-                            commercially proven formats — for European farms, mills, distributors and feed compounders.
+                            {t("hero.sub")}
                         </p>
                         <div className="rise-d3 mt-8 flex flex-wrap gap-3" data-testid="hero-cta-row">
                             <Link
@@ -96,14 +68,14 @@ export default function Home() {
                                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
                                 data-testid="hero-cta-explore-liquid"
                             >
-                                Explore liquid products <ArrowRight className="h-4 w-4" />
+                                {t("cta.explore_liquid")} <ArrowRight className="h-4 w-4" />
                             </Link>
                             <Link
                                 to="/animal-feeding"
                                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-colors"
                                 data-testid="hero-cta-animal-feeding"
                             >
-                                Animal feeding chapter <ChevronRight className="h-4 w-4" />
+                                {t("cta.feeding_chapter")} <ChevronRight className="h-4 w-4" />
                             </Link>
                             <a
                                 href={`mailto:${BRAND.email}`}
@@ -142,16 +114,13 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     <div className="grid md:grid-cols-12 gap-10 mb-14 items-end">
                         <div className="md:col-span-5">
-                            <div className="eyebrow">Four formats. One ocean.</div>
+                            <div className="eyebrow">{t("sec.families.eyebrow")}</div>
                             <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
-                                A complete seaweed system — not a single bottle.
+                                {t("sec.families.title")}
                             </h2>
                         </div>
                         <p className="md:col-span-7 text-slate-400 text-lg leading-relaxed">
-                            Apply the liquid for fast biostimulation. Apply the granulate for slow, soil-deep release.
-                            Dose the powder for tank-mix precision. Feed the meal for naturally balanced animal nutrition.
-                            Each format draws on the same hand-cut Atlantic raw material — refined to fit a different
-                            point in the agronomic and zootechnical calendar.
+                            {t("sec.families.body")}
                         </p>
                     </div>
 
@@ -174,7 +143,7 @@ export default function Home() {
                                 </div>
                                 <p className="mt-5 text-slate-300 leading-relaxed max-w-md">{f.copy}</p>
                                 <div className="mt-8 inline-flex items-center gap-2 text-sm text-kelp-400 font-medium">
-                                    Drill in <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                    {t("cta.drill_in")} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </Link>
                         ))}
@@ -200,9 +169,9 @@ export default function Home() {
             <section className="py-24 sm:py-32" data-testid="pillars-section">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8">
                     <div className="max-w-2xl mb-14">
-                        <div className="eyebrow">Why McLir</div>
+                        <div className="eyebrow">{t("pillars.eyebrow")}</div>
                         <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
-                            It is not a fertiliser. It is biology, refined.
+                            {t("pillars.title")}
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -267,20 +236,19 @@ export default function Home() {
             <section className="py-24 sm:py-32" data-testid="process-teaser-section">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12">
                     <div className="md:col-span-5">
-                        <div className="eyebrow">Process</div>
+                        <div className="eyebrow">{t("process.eyebrow")}</div>
                         <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
-                            From the cold North Atlantic to your bay number.
+                            {t("process.teaser.title")}
                         </h2>
                         <p className="mt-5 text-slate-400 leading-relaxed">
-                            Four tonnes of wet seaweed yield one tonne of finished meal. Drying never exceeds 75 °C.
-                            Final moisture is held at 12 – 14 %. Every shipment is batch-numbered against its harvest.
+                            {t("process.teaser.body")}
                         </p>
                         <Link
                             to="/manufacturing"
                             className="mt-7 inline-flex items-center gap-2 text-kelp-400 hover:text-kelp-300 text-sm font-medium"
                             data-testid="process-teaser-cta"
                         >
-                            View the full process <ArrowRight className="h-4 w-4" />
+                            {t("cta.view_full_process")} <ArrowRight className="h-4 w-4" />
                         </Link>
                     </div>
                     <div className="md:col-span-7 grid grid-cols-2 gap-4">
@@ -308,25 +276,23 @@ export default function Home() {
             <section className="py-24 sm:py-32 border-y border-white/5 bg-[#040912]" data-testid="market-teaser-section">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
                     <div className="md:col-span-7">
-                        <div className="eyebrow">Market context</div>
+                        <div className="eyebrow">{t("market.eyebrow")}</div>
                         <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
-                            Ireland is a small market. Europe and the world are not.
+                            {t("market.title")}
                         </h2>
                         <p className="mt-5 text-slate-400 leading-relaxed max-w-xl">
-                            Five buyer categories — biostimulants, animal feed, food ingredients, cosmetics and
-                            nutraceuticals — drive global seaweed demand. McLir is built around the two largest:
-                            agriculture and animal nutrition.
+                            {t("market.body")}
                         </p>
                         <Link
                             to="/market-insights"
                             className="mt-7 inline-flex items-center gap-2 text-kelp-400 hover:text-kelp-300 text-sm font-medium"
                             data-testid="market-teaser-cta"
                         >
-                            Open market insights <BarChart3 className="h-4 w-4" />
+                            {t("cta.open_market")} <BarChart3 className="h-4 w-4" />
                         </Link>
                     </div>
                     <div className="md:col-span-5 rounded-2xl border border-white/10 p-6 bg-[#0A1628]/60">
-                        <div className="eyebrow mb-3">Buyer segments — global</div>
+                        <div className="eyebrow mb-3">{t("market.segments_label")}</div>
                         {[
                             ["Agricultural biostimulants", 34],
                             ["Animal feed & nutrition", 26],
@@ -351,8 +317,8 @@ export default function Home() {
             {/* FAQ */}
             <section className="py-24 sm:py-32" data-testid="faq-section">
                 <div className="max-w-4xl mx-auto px-5 lg:px-8">
-                    <div className="eyebrow">FAQ</div>
-                    <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">Plain answers, before you call.</h2>
+                    <div className="eyebrow">{t("faq.eyebrow")}</div>
+                    <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">{t("faq.title")}</h2>
                     <Accordion type="single" collapsible className="mt-10" data-testid="faq-accordion">
                         {FAQS.map((f, i) => (
                             <AccordionItem key={i} value={`faq-${i}`} className="border-white/10">
@@ -374,13 +340,12 @@ export default function Home() {
             {/* CONTACT BAND */}
             <section className="py-24 sm:py-32 border-t border-white/5 bg-gradient-to-b from-[#0A1628] to-[#050B14]" data-testid="contact-band">
                 <div className="max-w-5xl mx-auto px-5 lg:px-8 text-center">
-                    <div className="eyebrow">Talk to us</div>
+                    <div className="eyebrow">{t("contact.eyebrow")}</div>
                     <h2 className="font-serif text-4xl sm:text-6xl mt-3 leading-tight">
-                        Tell us what you grow, raise or formulate.
+                        {t("contact.title")}
                     </h2>
                     <p className="mt-5 text-slate-400 max-w-2xl mx-auto">
-                        Real humans answer — typically within one working day. Sample shipments to verified
-                        growers, mills and feed compounders are free.
+                        {t("contact.body")}
                     </p>
                     <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a
@@ -395,7 +360,7 @@ export default function Home() {
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-colors"
                             data-testid="contact-band-cta"
                         >
-                            Open contact page <ArrowRight className="h-4 w-4" />
+                            {t("cta.open_contact")} <ArrowRight className="h-4 w-4" />
                         </Link>
                     </div>
                 </div>

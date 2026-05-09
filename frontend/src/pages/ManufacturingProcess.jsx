@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail } from "lucide-react";
 import { PROCESS_STEPS, BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 export default function ManufacturingProcess() {
+    const t = useT();
     return (
         <div className="pt-12 pb-32" data-testid="process-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8">
                 <Link to="/" className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white" data-testid="process-back">
-                    ← McLir Seaweed
+                    {t("cta.back_brand")}
                 </Link>
                 <div className="grid lg:grid-cols-12 gap-10 items-end mt-5">
                     <div className="lg:col-span-7">
-                        <div className="eyebrow">Manufacturing process</div>
+                        <div className="eyebrow">{t("page.process.eyebrow")}</div>
                         <h1 className="mt-3 font-serif text-5xl sm:text-6xl leading-[1] tracking-tight">
-                            Ten steps from the cold North Atlantic to your numbered storage bay.
+                            {t("page.process.title")}
                         </h1>
                         <p className="mt-5 text-slate-400 text-lg leading-relaxed max-w-2xl">
                             Every batch follows the same documented chain. Drying never exceeds 75 °C. Final moisture is

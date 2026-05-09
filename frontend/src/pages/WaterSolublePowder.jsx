@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Beaker, Package, Clock, ShieldCheck, FileText } from "lucide-react";
 import { WSP, BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 export default function WaterSolublePowder() {
+    const t = useT();
     return (
         <div className="pt-12 pb-32" data-testid="wsp-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8">
                 <Link to="/" className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white" data-testid="wsp-back">
-                    ← McLir Seaweed
+                    {t("cta.back_brand")}
                 </Link>
                 <div className="grid lg:grid-cols-12 gap-10 mt-5">
                     <div className="lg:col-span-7">
-                        <div className="eyebrow">Soluble solids</div>
-                        <h1 className="font-serif text-5xl sm:text-6xl mt-3 leading-[1] tracking-tight">{WSP.name}</h1>
-                        <p className="mt-3 italic font-serif text-2xl text-kelp-300">{WSP.tagline}</p>
+                        <div className="eyebrow">{t("fam.wsp.eyebrow")}</div>
+                        <h1 className="font-serif text-5xl sm:text-6xl mt-3 leading-[1] tracking-tight">{t("page.wsp.title")}</h1>
+                        <p className="mt-3 italic font-serif text-2xl text-kelp-300">{t("page.wsp.tagline")}</p>
                         <p className="mt-6 text-slate-400 text-lg leading-relaxed max-w-2xl">{WSP.summary}</p>
                     </div>
                     <div className="lg:col-span-5">

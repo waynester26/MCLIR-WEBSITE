@@ -2,24 +2,30 @@ import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, ChevronDown, Mail, MapPin } from "lucide-react";
 import { BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
+import LanguagePicker from "@/i18n/LanguagePicker";
 
-const NAV = [
-    { to: "/", label: "Home" },
-    {
-        label: "Products",
-        children: [
-            { to: "/liquid", label: "Liquid Seaweed" },
-            { to: "/granulates", label: "Granulates & Soil Conditioner" },
-            { to: "/water-soluble-powder", label: "Water Soluble Powder" },
-        ],
-    },
-    { to: "/animal-feeding", label: "Animal Feeding" },
-    { to: "/manufacturing", label: "Process" },
-    { to: "/market-insights", label: "Market Insights" },
-    { to: "/contact", label: "Contact" },
-];
+const useNav = () => {
+    const t = useT();
+    return [
+        { to: "/", label: t("nav.home") },
+        {
+            label: t("nav.products"),
+            children: [
+                { to: "/liquid", label: t("nav.liquid") },
+                { to: "/granulates", label: t("nav.granulates") },
+                { to: "/water-soluble-powder", label: t("nav.wsp") },
+            ],
+        },
+        { to: "/animal-feeding", label: t("nav.feeding") },
+        { to: "/manufacturing", label: t("nav.process") },
+        { to: "/market-insights", label: t("nav.insights") },
+        { to: "/contact", label: t("nav.contact") },
+    ];
+};
 
 function DesktopMenu() {
+    const NAV = useNav();
     return (
         <nav className="hidden lg:flex items-center gap-1" data-testid="desktop-nav">
             {NAV.map((item) =>
@@ -73,6 +79,7 @@ function DesktopMenu() {
 }
 
 function MobileMenu({ open, setOpen }) {
+    const NAV = useNav();
     return (
         <div
             className={`lg:hidden fixed inset-0 z-[60] bg-[#050B14]/98 backdrop-blur-xl transition-opacity ${
@@ -95,6 +102,9 @@ function MobileMenu({ open, setOpen }) {
                 </button>
             </div>
             <div className="px-6 py-6 space-y-1 max-h-[calc(100vh-72px)] overflow-y-auto">
+                <div className="pb-4 mb-2 border-b border-white/10">
+                    <LanguagePicker testid="mobile-lang-picker" />
+                </div>
                 {NAV.flatMap((item) =>
                     item.children
                         ? [
@@ -132,6 +142,7 @@ function MobileMenu({ open, setOpen }) {
 
 export default function Layout({ children }) {
     const [open, setOpen] = useState(false);
+    const t = useT();
     return (
         <div className="min-h-screen bg-[#050B14] text-slate-100">
             <header className="fixed top-0 inset-x-0 z-50 glass-nav" data-testid="site-header">
@@ -151,13 +162,16 @@ export default function Layout({ children }) {
                     </Link>
                     <DesktopMenu />
                     <div className="flex items-center gap-3">
+                        <div className="hidden md:block">
+                            <LanguagePicker testid="header-lang-picker" />
+                        </div>
                         <Link
                             to="/contact"
                             className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
                             data-testid="header-cta-contact"
                         >
                             <Mail className="h-3.5 w-3.5" />
-                            Request a sample
+                            {t("cta.sample")}
                         </Link>
                         <button
                             className="lg:hidden p-2 rounded-md hover:bg-white/5"
@@ -189,23 +203,22 @@ export default function Layout({ children }) {
                             </div>
                         </div>
                         <p className="text-slate-400 text-sm max-w-md leading-relaxed">
-                            {BRAND.tagline} Liquid concentrates, granulates, water-soluble powder and a complete animal-feed
-                            range — produced for export to professional growers, mills and distributors.
+                            {t("footer.tagline")}
                         </p>
                     </div>
                     <div>
-                        <div className="eyebrow mb-3">Explore</div>
+                        <div className="eyebrow mb-3">{t("footer.explore")}</div>
                         <ul className="space-y-2 text-sm">
-                            <li><Link to="/liquid" className="hover:text-white text-slate-300" data-testid="footer-link-liquid">Liquid Seaweed</Link></li>
-                            <li><Link to="/granulates" className="hover:text-white text-slate-300" data-testid="footer-link-granulates">Granulates</Link></li>
-                            <li><Link to="/water-soluble-powder" className="hover:text-white text-slate-300" data-testid="footer-link-wsp">Water Soluble Powder</Link></li>
-                            <li><Link to="/animal-feeding" className="hover:text-white text-slate-300" data-testid="footer-link-animal-feeding">Animal Feeding</Link></li>
-                            <li><Link to="/manufacturing" className="hover:text-white text-slate-300" data-testid="footer-link-process">Manufacturing Process</Link></li>
-                            <li><Link to="/market-insights" className="hover:text-white text-slate-300" data-testid="footer-link-insights">Market Insights</Link></li>
+                            <li><Link to="/liquid" className="hover:text-white text-slate-300" data-testid="footer-link-liquid">{t("nav.liquid")}</Link></li>
+                            <li><Link to="/granulates" className="hover:text-white text-slate-300" data-testid="footer-link-granulates">{t("nav.granulates")}</Link></li>
+                            <li><Link to="/water-soluble-powder" className="hover:text-white text-slate-300" data-testid="footer-link-wsp">{t("nav.wsp")}</Link></li>
+                            <li><Link to="/animal-feeding" className="hover:text-white text-slate-300" data-testid="footer-link-animal-feeding">{t("nav.feeding")}</Link></li>
+                            <li><Link to="/manufacturing" className="hover:text-white text-slate-300" data-testid="footer-link-process">{t("nav.process")}</Link></li>
+                            <li><Link to="/market-insights" className="hover:text-white text-slate-300" data-testid="footer-link-insights">{t("nav.insights")}</Link></li>
                         </ul>
                     </div>
                     <div>
-                        <div className="eyebrow mb-3">Contact</div>
+                        <div className="eyebrow mb-3">{t("footer.contact")}</div>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start gap-2 text-slate-300">
                                 <Mail className="h-4 w-4 mt-0.5 text-kelp-500" />
@@ -230,7 +243,7 @@ export default function Layout({ children }) {
                             © {new Date().getFullYear()} McLir Seaweed — Plombières, Belgium
                         </div>
                         <div className="text-xs font-mono text-slate-500">
-                            Atlantic raw material · European processing · Export ready
+                            {t("footer.signature")}
                         </div>
                     </div>
                 </div>

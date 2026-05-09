@@ -1,0 +1,27 @@
+{
+  "summary": "i18n (EN/DE/GA) language switcher fully verified end-to-end on Home, all inner pages, mobile menu, persistence, document.lang, and regression flows (FAQ, family cards, mailto, Recharts on /market-insights and /animal-feeding, /liquid 5 tabs). 67/67 assertions pass. Zero console errors across all three languages.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_3.json"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Picker active-state detection in tests must rely on textContent or class checks, not inner_text matches against mixed-case strings, because .eyebrow applies text-transform:uppercase. This is purely a tester note, not a bug.",
+    "i18n.jsx is clean and small (~250 lines). Translation keys are organised by section. localStorage write is wrapped in try/catch. Provider initialises lang from localStorage. Document.documentElement.lang is updated both on setLang and via useEffect. Solid implementation.",
+    "Layout.jsx correctly mounts header LanguagePicker (hidden md:block) and a separate mobile-lang-picker at the top of the mobile nav drawer. Nav items are derived inside a useNav() hook so they re-render on language change.",
+    "Minor: header LanguagePicker is hidden on <md (768px) so on tablet/mobile the only way to switch language is via the mobile menu — that matches the spec ('header desktop & mobile menu')."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% (67/67 assertions)"},
+  "test_credentials": "N/A — pure static frontend, no auth",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "i18n test was run against REACT_APP_BACKEND_URL. Key picker testids: 'header-lang-picker', 'header-lang-picker-en/de/ga', 'mobile-lang-picker', 'mobile-lang-picker-en/de/ga'. Active state styling: button gains class 'bg-kelp-600'. localStorage key is 'mclir_lang'. Document html lang attribute is updated on switch. CAUTION when asserting eyebrow text via inner_text — those elements are CSS-uppercased; either compare lowercased strings or use el.textContent which preserves the source case. AnimalFeeding.jsx and Contact.jsx alias useT() as 'tr' (intentional, due to local 't' variable), this works correctly. All checked translation keys verified: nav.*, cta.sample, hero.eyebrow/title.line1, sec.families.eyebrow, pillars.eyebrow, faq.eyebrow, contact.eyebrow, footer.explore/contact, page.liquid.title, page.granulates.title, page.wsp.title, page.process.eyebrow, page.insights.eyebrow, page.contact.eyebrow/title, page.feeding.eyebrow. Persistence verified across hard reload on /liquid for both DE and GA. Recharts (donut + bar) still render on /market-insights and /animal-feeding regardless of language.",
+  "rca of the issue": "No bugs found. Initial test run reported 10 failures, but RCA confirmed they were all false negatives in the test assertions — caused by `.eyebrow { text-transform: uppercase }` in /app/frontend/src/index.css line 70. Playwright's inner_text returns visible (rendered) text, so uppercased eyebrow strings did not match the dictionary's mixed-case strings. Re-running with case-insensitive comparison and textContent checks produced 100% pass."
+}

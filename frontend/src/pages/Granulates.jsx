@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sprout, Package, Clock, ShieldCheck } from "lucide-react";
 import { GRANULATES, BRAND } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 export default function Granulates() {
+    const t = useT();
     return (
         <div className="pt-12 pb-32 noise-overlay earth-bg min-h-screen" data-testid="granulates-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8 relative z-10">
                 <Link to="/" className="eyebrow text-amber-200/70 hover:text-amber-100" data-testid="granulates-back">
-                    ← McLir Seaweed
+                    {t("cta.back_brand")}
                 </Link>
                 <div className="grid lg:grid-cols-12 gap-10 mt-5 items-end">
                     <div className="lg:col-span-7">
                         <h1 className="font-serif text-5xl sm:text-6xl leading-[1] tracking-tight">
-                            Granulates, Soil Conditioner & Seaweed Meal
+                            {t("page.granulates.title")}
                         </h1>
                         <p className="mt-5 text-slate-300 text-lg leading-relaxed max-w-2xl">
-                            Dried, broken, sized and graded — the same Atlantic <em>Ascophyllum nodosum</em>, presented as
-                            a slow-release granular feed for the soil and the soil food web. Designed to spread cleanly,
-                            blend uniformly into NPK and rebuild structure season over season.
+                            {t("page.granulates.intro")}
                         </p>
                     </div>
                     <div className="lg:col-span-5 grid grid-cols-3 gap-3 text-center">

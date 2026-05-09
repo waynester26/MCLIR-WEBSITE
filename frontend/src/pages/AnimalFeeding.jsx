@@ -23,6 +23,7 @@ import {
     PARTICLE_SIZES,
     FEED_PACKAGING,
 } from "@/data/content";
+import { useT } from "@/i18n/i18n";
 
 // --- chart data derived from brochure ---
 const COMPOSITION_PIE = [
@@ -95,6 +96,7 @@ function SectionTitle({ eyebrow, title, kicker }) {
 }
 
 export default function AnimalFeeding() {
+    const tr = useT();
     return (
         <div className="pt-12 pb-32" data-testid="animal-feeding-page">
             {/* HERO */}
@@ -109,17 +111,14 @@ export default function AnimalFeeding() {
                 </div>
                 <div className="relative max-w-7xl mx-auto px-5 lg:px-8 py-20">
                     <Link to="/" className="eyebrow text-slate-300 hover:text-white" data-testid="feed-back">
-                        ← McLir Seaweed
+                        {tr("cta.back_brand")}
                     </Link>
-                    <div className="eyebrow mt-6 text-amber-200/80">Chapter — Animal feeding</div>
+                    <div className="eyebrow mt-6 text-amber-200/80">{tr("page.feeding.eyebrow")}</div>
                     <h1 className="mt-3 font-serif text-5xl sm:text-7xl leading-[0.95] tracking-tight max-w-4xl">
-                        A natural multimineral feed material — vegetable origin, easily digested, suitable for animals of all ages.
+                        {tr("animal.cta.title")}
                     </h1>
                     <p className="mt-6 max-w-3xl text-slate-300 text-lg leading-relaxed">
-                        Atlantic <em>Ascophyllum nodosum</em> harvested off the west coast of Ireland, low-temperature dried,
-                        fine-milled to your micron specification, delivered to feed mills, dairy and beef farms,
-                        equine yards, sheep flocks, goat herds, poultry operations and pet-food formulators across
-                        Europe and beyond.
+                        {tr("animal.cta.body")}
                     </p>
                     <div className="mt-8 flex flex-wrap gap-3">
                         <a
