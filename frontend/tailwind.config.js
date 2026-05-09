@@ -7,7 +7,7 @@ module.exports = {
             fontFamily: {
                 serif: ["'Cormorant Garamond'", "Georgia", "serif"],
                 sans: ["Manrope", "system-ui", "sans-serif"],
-                mono: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+                mono: ["'Outfit'", "system-ui", "sans-serif"],
                 code: ["'IBM Plex Mono'", "ui-monospace", "monospace"],
             },
             colors: {

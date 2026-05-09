@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -57,19 +57,20 @@ body {
 }
 
 .font-mono {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
 .font-code {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
 }
 
-/* Overline / eyebrow — modern premium sans (Plus Jakarta Sans) */
+/* Overline / eyebrow — modern premium sans (Outfit) */
 .eyebrow {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #94A3B8;
@@ -77,9 +78,9 @@ body {
 
 /* Caption — premium sans for stat sub-lines and small label rows */
 .caption {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-weight: 500;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     color: #94A3B8;
 }
 
@@ -179,8 +180,8 @@ body {
     font-size: 0.875rem;
 }
 .tech-table th {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-    font-weight: 600;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-size: 0.7rem;
