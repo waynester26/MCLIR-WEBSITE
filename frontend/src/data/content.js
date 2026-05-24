@@ -42,8 +42,8 @@ export const IMG = {
 
     // Liquid / bottle visuals
     liquidBottle: "https://images.unsplash.com/photo-1567001847230-ed5da95bd055?auto=format&fit=crop&w=900&q=80",
-    coldPressLabel10: "https://images.unsplash.com/photo-1582647509711-c8aa8a8bda71?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
-    coldPressLabel15: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    coldPressLabel10: "/cold press 10.png",
+    coldPressLabel15: "/cold press 15.png",
     amberLiquid: "https://images.unsplash.com/photo-1543362906-acfc16c67564?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
     foliarSpray: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
 };
