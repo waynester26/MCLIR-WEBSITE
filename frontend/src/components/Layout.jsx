@@ -231,6 +231,18 @@ export default function Layout({ children }) {
                                 <span>{BRAND.location}</span>
                             </li>
                         </ul>
+                        <div className="eyebrow mb-3 mt-6">{t("footer.legal")}</div>
+                        <ul className="space-y-2 text-sm">
+                            <li>
+                                <Link
+                                    to="/impressum-datenschutz"
+                                    className="hover:text-white text-slate-300"
+                                    data-testid="footer-link-impressum"
+                                >
+                                    {t("nav.impressum")}
+                                </Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="border-t border-white/5">

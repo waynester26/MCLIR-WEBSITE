@@ -103,31 +103,34 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Premium logo medallion */}
+                        {/* Premium logo medallion — glass crest, transparent integration */}
                         <div className="hidden lg:flex items-center justify-end lg:col-span-5" data-testid="hero-logo">
                             <div className="relative">
                                 {/* Outer kelp glow */}
-                                <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(60,122,88,0.25),transparent_65%)] blur-2xl" />
+                                <div className="absolute -inset-14 rounded-full bg-[radial-gradient(circle,rgba(60,122,88,0.32),transparent_70%)] blur-3xl" />
                                 {/* Soft ambient ring */}
-                                <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-kelp-500/40 via-transparent to-premium-400/15 blur-xl opacity-70" />
+                                <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-kelp-500/35 via-transparent to-kelp-400/20 blur-2xl opacity-80" />
 
-                                <div className="relative h-[22rem] w-[22rem] rounded-full bg-gradient-to-br from-[#0C1B2C] via-[#081320] to-[#040A12] border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9),0_0_60px_-15px_rgba(60,122,88,0.5)] flex items-center justify-center backdrop-blur-xl">
-                                    {/* Inner ring */}
-                                    <div className="absolute inset-3 rounded-full border border-white/5" />
-                                    <div className="absolute inset-6 rounded-full border border-kelp-500/15" />
+                                <div className="relative h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(20,42,32,0.55),rgba(5,11,20,0.85))] border border-kelp-500/20 shadow-[0_40px_90px_-25px_rgba(0,0,0,0.95),0_0_80px_-20px_rgba(60,122,88,0.55),inset_0_1px_0_rgba(255,255,255,0.05)] flex items-center justify-center backdrop-blur-xl">
+                                    {/* Inner rings — elegant, thin */}
+                                    <div className="absolute inset-3 rounded-full border border-white/[0.06]" />
+                                    <div className="absolute inset-7 rounded-full border border-kelp-500/15" />
 
-                                    {/* Glass medallion */}
-                                    <div className="relative h-64 w-64 rounded-full bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 flex items-center justify-center overflow-hidden">
-                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(90,154,120,0.18),transparent_55%)]" />
+                                    {/* Transparent glass medallion — no rectangle behind logo */}
+                                    <div className="relative h-64 w-64 rounded-full flex items-center justify-center">
+                                        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_25%,rgba(120,180,150,0.16),transparent_60%)]" />
                                         <img
                                             src={BRAND.logo}
                                             alt="McLir Seaweed crest"
-                                            className="relative h-44 w-44 object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+                                            className="relative h-52 w-52 object-contain mix-blend-screen brightness-110 drop-shadow-[0_10px_30px_rgba(60,122,88,0.45)]"
+                                            data-testid="hero-logo-img"
                                         />
                                     </div>
 
+                                    {/* Top inner light */}
+                                    <div className="absolute top-2 left-1/2 -translate-x-1/2 h-2 w-40 rounded-full bg-gradient-to-r from-transparent via-white/15 to-transparent blur-md" />
                                     {/* Bottom shine */}
-                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-32 rounded-full bg-gradient-to-r from-transparent via-kelp-500/60 to-transparent blur-[1px]" />
+                                    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 h-1 w-32 rounded-full bg-gradient-to-r from-transparent via-kelp-500/70 to-transparent blur-[1px]" />
                                 </div>
 
                                 {/* Caption */}

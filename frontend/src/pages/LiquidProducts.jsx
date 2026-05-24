@@ -1,37 +1,52 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Droplet, Beaker, FileText, Package, Clock, ShieldCheck } from "lucide-react";
-import { LIQUID_PRODUCTS, BRAND } from "@/data/content";
+import {
+    ArrowRight,
+    Droplet,
+    Beaker,
+    FileText,
+    Package,
+    Clock,
+    ShieldCheck,
+    Award,
+    Leaf,
+    MapPin,
+    FlaskConical,
+} from "lucide-react";
+import { LIQUID_PRODUCTS, BRAND, IMG } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
 function ProductPanel({ p, t }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
-            {/* Visual — premium liquid vessel with kelp backdrop */}
+            {/* Visual — premium label artwork on dark seaweed background */}
             <div className="lg:col-span-5">
-                <div className="liquid-vessel rounded-3xl p-8 h-full flex items-center justify-center relative overflow-hidden">
+                <div className="liquid-vessel rounded-3xl p-6 sm:p-8 h-full flex items-center justify-center relative overflow-hidden">
                     <img
-                        src="https://images.unsplash.com/photo-1567001847230-ed5da95bd055?auto=format&fit=crop&w=900&q=80"
+                        src={IMG.seaweedKelpForest}
                         alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-35"
+                        className="absolute inset-0 w-full h-full object-cover opacity-25"
+                        loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/55 via-[#050B14]/70 to-[#050B14]/95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/65 via-[#050B14]/80 to-[#050B14]/95" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.32),transparent_60%)]" />
-                    <div className="relative z-10 text-center">
-                        <div className="mx-auto w-40 h-72 rounded-[2rem] bg-gradient-to-b from-kelp-700 via-[#0F2A1B] to-[#050B14] border border-white/10 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7)] relative">
-                            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-3 rounded-sm bg-[#0A1628] border border-white/10" />
-                            <div className="absolute top-7 left-1/2 -translate-x-1/2 w-24 h-6 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center">
-                                <span className="font-mono text-[9px] tracking-[0.25em] text-kelp-400">McLIR</span>
-                            </div>
-                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-28 px-2 py-3 rounded-md bg-[#050B14]/90 border border-white/10 text-center">
-                                <div className="font-serif text-base text-white leading-none">{p.name.split("—")[0].trim()}</div>
-                                <div className="mt-1 font-mono text-[8px] tracking-[0.22em] text-kelp-400 uppercase">
-                                    {p.line}
-                                </div>
-                            </div>
-                            <div className="absolute inset-x-4 inset-y-16 rounded-xl bg-gradient-to-b from-kelp-500/30 to-kelp-700/40 blur-md opacity-60" />
+
+                    <div className="relative z-10 w-full">
+                        <div className="mx-auto max-w-sm rounded-2xl overflow-hidden border border-kelp-500/25 shadow-[0_30px_80px_-25px_rgba(0,0,0,0.85),0_0_60px_-25px_rgba(60,122,88,0.6)]">
+                            <img
+                                src={p.image}
+                                alt={`${p.title} — official McLir label`}
+                                className="w-full h-auto block"
+                                loading="eager"
+                                data-testid={`liquid-image-${p.slug}`}
+                            />
                         </div>
-                        <div className="mt-6 eyebrow text-slate-200">100 % Ascophyllum nodosum · {t("hero.medallion_caption")}</div>
+                        <div className="mt-6 text-center">
+                            <div className="eyebrow text-slate-200">
+                                100 % Ascophyllum nodosum · {t("hero.medallion_caption")}
+                            </div>
+                            <div className="mt-2 font-serif text-base italic text-kelp-300">"{p.tagline}"</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,18 +54,25 @@ function ProductPanel({ p, t }) {
             {/* Detail */}
             <div className="lg:col-span-7">
                 <div className="eyebrow">{p.line}</div>
-                <h3 className="font-serif text-3xl sm:text-4xl mt-2 leading-tight" data-testid={`liquid-name-${p.slug}`}>
-                    {p.name}
+                <h3
+                    className="font-serif text-3xl sm:text-4xl mt-2 leading-tight"
+                    data-testid={`liquid-name-${p.slug}`}
+                >
+                    {p.title}
                 </h3>
                 <p className="mt-4 text-slate-400 leading-relaxed">{p.summary}</p>
 
                 <div className="grid sm:grid-cols-2 gap-3 mt-6 text-sm">
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Droplet className="inline h-3 w-3 mr-1" /> {t("liquid.source")}</div>
+                        <div className="eyebrow">
+                            <Droplet className="inline h-3 w-3 mr-1" /> {t("liquid.source")}
+                        </div>
                         <div className="mt-1 text-slate-200">{p.source}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Beaker className="inline h-3 w-3 mr-1" /> {t("liquid.extraction")}</div>
+                        <div className="eyebrow">
+                            <Beaker className="inline h-3 w-3 mr-1" /> {t("liquid.extraction")}
+                        </div>
                         <div className="mt-1 text-slate-200">{p.method}</div>
                     </div>
                 </div>
@@ -64,13 +86,32 @@ function ProductPanel({ p, t }) {
                         <tbody>
                             {p.spec.map(([k, v]) => (
                                 <tr key={k}>
-                                    <th className="w-[42%]">{k}</th>
+                                    <th className="w-[55%]">{k}</th>
                                     <td className="text-slate-200 font-mono text-xs">{v}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
+
+                {/* Heavy metals table */}
+                {p.heavyMetals && (
+                    <div className="mt-5 rounded-xl border border-white/10 overflow-hidden">
+                        <div className="px-5 py-3 bg-white/5 eyebrow flex items-center gap-2">
+                            <FlaskConical className="h-3 w-3" /> {t("liquid.heavy_metals")}
+                        </div>
+                        <table className="tech-table w-full">
+                            <tbody>
+                                {p.heavyMetals.map(([k, v]) => (
+                                    <tr key={k}>
+                                        <th className="w-[55%]">{k}</th>
+                                        <td className="text-slate-200 font-mono text-xs">{v}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
 
                 {/* Bioactives */}
                 <div className="mt-7">
@@ -100,33 +141,97 @@ function ProductPanel({ p, t }) {
                     </ul>
                 </div>
 
+                {/* How to apply */}
+                {p.usage && (
+                    <div className="mt-7 rounded-xl border border-white/10 overflow-hidden">
+                        <div className="px-5 py-3 bg-white/5 eyebrow flex items-center gap-2">
+                            <Droplet className="h-3 w-3" /> {t("liquid.usage")}
+                        </div>
+                        <div className="divide-y divide-white/5">
+                            {p.usage.map((u) => (
+                                <div key={u.label} className="px-5 py-3 grid sm:grid-cols-[140px_1fr] gap-3">
+                                    <div className="font-mono text-[11px] tracking-[0.18em] uppercase text-kelp-300">
+                                        {u.label}
+                                    </div>
+                                    <div className="text-slate-300 text-sm leading-relaxed">{u.text}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
                 {/* Rate, packaging, storage */}
                 <div className="grid sm:grid-cols-3 gap-3 mt-7 text-sm">
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Clock className="inline h-3 w-3 mr-1" /> {t("liquid.rate")}</div>
+                        <div className="eyebrow">
+                            <Clock className="inline h-3 w-3 mr-1" /> {t("liquid.rate")}
+                        </div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.rate}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Package className="inline h-3 w-3 mr-1" /> {t("liquid.packaging")}</div>
+                        <div className="eyebrow">
+                            <Package className="inline h-3 w-3 mr-1" /> {t("liquid.packaging")}
+                        </div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.packaging.join(" · ")}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><ShieldCheck className="inline h-3 w-3 mr-1" /> {t("liquid.storage")}</div>
+                        <div className="eyebrow">
+                            <ShieldCheck className="inline h-3 w-3 mr-1" /> {t("liquid.storage")}
+                        </div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.storage}</div>
                     </div>
                 </div>
 
-                <div className="mt-5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-200/80 font-mono">
+                {/* Certifications & Origin */}
+                {(p.certifications || p.origin) && (
+                    <div className="grid sm:grid-cols-2 gap-3 mt-5 text-sm">
+                        {p.certifications && (
+                            <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-4">
+                                <div className="eyebrow text-amber-200/80">
+                                    <Award className="inline h-3 w-3 mr-1" /> {t("liquid.certifications")}
+                                </div>
+                                <ul className="mt-2 space-y-1">
+                                    {p.certifications.map((c) => (
+                                        <li
+                                            key={c}
+                                            className="text-amber-100/85 text-xs font-mono leading-relaxed flex gap-2"
+                                        >
+                                            <Leaf className="h-3 w-3 mt-0.5 text-amber-300" />
+                                            {c}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                        {p.origin && (
+                            <div className="rounded-lg border border-kelp-500/20 bg-kelp-500/5 p-4">
+                                <div className="eyebrow text-kelp-300">
+                                    <MapPin className="inline h-3 w-3 mr-1" /> {t("liquid.origin")}
+                                </div>
+                                <div className="mt-1 text-slate-200 leading-relaxed text-sm">{p.origin}</div>
+                            </div>
+                        )}
+                    </div>
+                )}
+
+                <div className="mt-5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-200/80 font-mono leading-relaxed">
                     {t("liquid.batch_note")} · {p.batchNote}
                 </div>
 
-                <div className="mt-7">
+                <div className="mt-7 flex flex-wrap gap-3">
                     <a
-                        href={`mailto:${BRAND.email}?subject=${encodeURIComponent(`Sample request — ${p.name}`)}`}
+                        href={`mailto:${BRAND.email}?subject=${encodeURIComponent(`Sample request — ${p.title}`)}`}
                         className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
                         data-testid={`liquid-sample-cta-${p.slug}`}
                     >
                         {t("cta.request_sample")} <ArrowRight className="h-4 w-4" />
+                    </a>
+                    <a
+                        href={`mailto:${BRAND.email}?subject=${encodeURIComponent(`Datasheet request — ${p.title}`)}`}
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-slate-100 hover:text-white text-sm font-medium transition-colors"
+                        data-testid={`liquid-tds-cta-${p.slug}`}
+                    >
+                        <FileText className="h-4 w-4" /> {t("cta.download_tds")}
                     </a>
                 </div>
             </div>
@@ -141,35 +246,57 @@ export default function LiquidProducts() {
 
     return (
         <div className="pt-12 pb-32" data-testid="liquid-page">
-            <section className="max-w-7xl mx-auto px-5 lg:px-8">
-                <Link to="/" className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white" data-testid="liquid-back">
-                    {t("cta.back_brand")}
-                </Link>
-                <h1 className="mt-5 font-serif text-5xl sm:text-6xl leading-[1] tracking-tight">
-                    {t("page.liquid.title")}
-                </h1>
-                <p className="mt-5 max-w-3xl text-slate-400 text-lg leading-relaxed">
-                    {t("page.liquid.intro")}
-                </p>
-
-                {/* Selector tabs */}
-                <div className="mt-10 flex flex-wrap gap-2 border-b border-white/10 pb-1" data-testid="liquid-tabs">
-                    {LIQUID_PRODUCTS.map((p) => (
-                        <button
-                            key={p.slug}
-                            onClick={() => setActive(p.slug)}
-                            data-testid={`liquid-tab-${p.slug}`}
-                            className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-colors ${
-                                active === p.slug
-                                    ? "text-white border-kelp-500"
-                                    : "text-slate-400 border-transparent hover:text-slate-200"
-                            }`}
-                        >
-                            {p.name.replace("Liquid Seaweed ", "").replace(" — ", " · ")}
-                        </button>
-                    ))}
+            {/* Atmospheric backdrop */}
+            <section className="relative overflow-hidden">
+                <div className="absolute inset-0 -z-10">
+                    <img
+                        src={IMG.atlanticCoast}
+                        alt=""
+                        className="h-full w-full object-cover opacity-25"
+                        loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14] via-[#050B14]/85 to-[#050B14]" />
                 </div>
 
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 relative">
+                    <Link
+                        to="/"
+                        className="eyebrow inline-flex items-center gap-2 text-slate-400 hover:text-white"
+                        data-testid="liquid-back"
+                    >
+                        {t("cta.back_brand")}
+                    </Link>
+                    <h1 className="mt-5 font-serif text-5xl sm:text-6xl leading-[1] tracking-tight">
+                        {t("page.liquid.title")}
+                    </h1>
+                    <p className="mt-5 max-w-3xl text-slate-300 text-lg leading-relaxed">
+                        {t("page.liquid.intro")}
+                    </p>
+
+                    {/* Selector tabs */}
+                    <div
+                        className="mt-10 flex flex-wrap gap-2 border-b border-white/10 pb-1"
+                        data-testid="liquid-tabs"
+                    >
+                        {LIQUID_PRODUCTS.map((p) => (
+                            <button
+                                key={p.slug}
+                                onClick={() => setActive(p.slug)}
+                                data-testid={`liquid-tab-${p.slug}`}
+                                className={`px-4 py-3 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                                    active === p.slug
+                                        ? "text-white border-kelp-500"
+                                        : "text-slate-400 border-transparent hover:text-slate-200"
+                                }`}
+                            >
+                                {p.title}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="max-w-7xl mx-auto px-5 lg:px-8">
                 <div className="mt-12">
                     <ProductPanel p={product} t={t} />
                 </div>

@@ -9,6 +9,7 @@ import LawnsAndTurf from "@/pages/LawnsAndTurf";
 import ManufacturingProcess from "@/pages/ManufacturingProcess";
 import MarketInsights from "@/pages/MarketInsights";
 import Contact from "@/pages/Contact";
+import Impressum from "@/pages/Impressum";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                             <Route path="/manufacturing" element={<ManufacturingProcess />} />
                             <Route path="/market-insights" element={<MarketInsights />} />
                             <Route path="/contact" element={<Contact />} />
+                            <Route path="/impressum-datenschutz" element={<Impressum />} />
                             <Route path="*" element={<Home />} />
                         </Routes>
                     </Layout>

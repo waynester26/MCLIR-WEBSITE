@@ -1,0 +1,93 @@
+{
+  "summary": "Iteration 6 frontend-only smoke + acceptance test of the McLir Seaweed overhaul: GA removal, 3-language i18n, new /impressum-datenschutz page, Liquid range restricted to Cold Press 10/15 only, manufacturing timeline images, hero medallion, footer legal link, mobile responsiveness. All requested acceptance criteria are met. Zero console errors across all routes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "language_switcher": {
+      "header_buttons": ["header-lang-picker-en", "header-lang-picker-de", "header-lang-picker-fr"],
+      "ga_button_removed": true,
+      "passed": true
+    },
+    "home_hero_medallion": {
+      "hero-logo": true,
+      "hero-logo-img": true,
+      "mobile_hero_logo_hidden": true,
+      "passed": true
+    },
+    "liquid_page": {
+      "tabs_found": ["liquid-tab-cold-press-10", "liquid-tab-cold-press-15"],
+      "forbidden_tabs_absent": true,
+      "cp10_image_natural_width": 1672,
+      "cp15_image_natural_width": 1672,
+      "sample_cta_present": true,
+      "tds_cta_present": true,
+      "spec_words_present": ["Dry matter", "K₂O (Unicode subscript)", "Total nitrogen", "Amino acids", "Organic Matter", "Alginic acid", "Mannitol", "Laminarin", "Phenolics", "pH", "Iodine", "Iron", "Lead", "Mercury"],
+      "packaging_chips_present": ["1 L", "5 L", "10 L", "20 L", "210 L", "1000 L", "1040 L"],
+      "passed": true,
+      "note": "Test script initially flagged 'K2O' as missing — false positive: code correctly renders Unicode 'K₂O' (subscript). Verified in /app/frontend/src/data/content.js lines 68 and 126."
+    },
+    "manufacturing_timeline": {
+      "steps_rendered": "10/10 (process-step-01 .. process-step-10)",
+      "each_step_has_image": true,
+      "passed": true
+    },
+    "market_insights": {
+      "chart-buyer-segments_present": true,
+      "passed": true
+    },
+    "contact_page": {
+      "renders": true,
+      "unchanged_from_spec": true,
+      "passed": true
+    },
+    "impressum_page": {
+      "data_testid_impressum-page_present": true,
+      "address_belderbusch_10_plombieres": true,
+      "email_McLir@Sea-Weed.DE_present": true,
+      "phone_+49_177_1546204_present": true,
+      "title_DE": "Impressum und Datenschutz",
+      "title_FR": "Mentions légales et politique de confidentialité",
+      "passed": true
+    },
+    "footer_legal_link": {
+      "footer-link-impressum_present": true,
+      "navigates_to_/impressum-datenschutz": true,
+      "passed": true
+    },
+    "language_translation_no_fallback": {
+      "fr_nav_observed": "Accueil / Produits / Pelouses & gazon / Procédé / Analyses de marché / Contact",
+      "de_impressum_title": "Impressum und Datenschutz",
+      "fr_impressum_title": "Mentions légales et politique de confidentialité",
+      "passed": true
+    },
+    "forbidden_strings_check": {
+      "routes_checked": ["/", "/liquid", "/granulates", "/lawns-and-turf", "/manufacturing", "/market-insights", "/contact"],
+      "forbidden_terms": ["Gaeilge", "Gaelic", "Animal feeding", "Water Soluble Powder", "WSP", "Superior 30", "Superior 20"],
+      "any_match": false,
+      "passed": true
+    },
+    "console_errors_total": 0,
+    "routes_smoke_check_200": ["/", "/liquid", "/granulates", "/lawns-and-turf", "/manufacturing", "/market-insights", "/contact", "/impressum-datenschutz"]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "i18n.jsx LANGS array correctly trimmed to [en, de, fr]; SUPPORTED set matches. detectInitialLang() still handles localStorage + navigator.languages fallback chain. Old 'ga' Gaelic entries fully removed.",
+    "App.js correctly registers /impressum-datenschutz route. Impressum.jsx renders all 10 GDPR sections + imprint block + disclaimer. Translation keys page.impressum.*, impressum.*, privacy.* are all defined for en/de/fr — verified no missing-key fallback.",
+    "Layout.jsx footer now includes a t('footer.legal') block with a single link to /impressum-datenschutz carrying data-testid='footer-link-impressum'. Mobile drawer still mounts a duplicate LanguagePicker — harmless, design choice from prior iterations.",
+    "LiquidProducts spec table uses Unicode 'K₂O' (chemical subscript) — semantically correct. Test scripts that grep for 'K2O' (ASCII) will get a false negative; recommend searching for 'K₂O' in future regression tests.",
+    "PROCESS_STEPS each carry .img URL; ManufacturingProcess.jsx renders an <img> inside every alternating timeline card. Verified all 10 steps."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped)", "frontend": "100%"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 6 verified the full McLir overhaul. All acceptance criteria pass. Two pitfalls to remember for next agent: (1) the spec table uses Unicode 'K₂O' (U+2082), not ASCII 'K2O' — grep accordingly. (2) When testing the contact tiles after a language switch, use the active-language string (e.g. 'Logistique' in FR), not the EN one. The 'mobile-lang-picker' duplicate is intentional and not a defect.",
+  "rca of the issue": "n/a — feature works as specified."
+}
