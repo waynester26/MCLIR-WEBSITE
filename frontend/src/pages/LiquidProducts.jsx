@@ -23,12 +23,12 @@ function ProductPanel({ p, t }) {
             <div className="lg:col-span-5">
                 <div className="liquid-vessel rounded-3xl p-6 sm:p-8 h-full flex items-center justify-center relative overflow-hidden">
                     <img
-                        src={IMG.seaweedKelpForest}
-                        alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-25"
+                        src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200"
+                        alt="Fresh Atlantic seaweed kelp underwater"
+                        className="absolute inset-0 w-full h-full object-cover opacity-80"
                         loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/65 via-[#050B14]/80 to-[#050B14]/95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/20 via-[#050B14]/30 to-[#050B14]/50" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.32),transparent_60%)]" />
 
                     <div className="relative z-10 w-full">
