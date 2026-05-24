@@ -16,73 +16,50 @@ import {
 import { LIQUID_PRODUCTS, BRAND, IMG } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
-/* ── Per-product photo config ── */
-const PRODUCT_PHOTOS = {
-    "cold-press-10": {
-        productImg: "/cold press 10.png",
-        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg",
-        seaweedAlt: "Ascophyllum nodosum seaweed on the Atlantic coast — source of McLir Cold Press 10",
-    },
-    "cold-press-15": {
-        productImg: "/cold press 15.png",
-        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg",
-        seaweedAlt: "Ascophyllum nodosum rockweed on Atlantic coast — source of McLir Cold Press 15",
-    },
+/* ── Product image map — matching exact filenames in /public ── */
+const PRODUCT_IMG = {
+    "cold-press-10": "/cold press 10.png",
+    "cold-press-15": "/cold press 15.png",
 };
 
 function ProductPanel({ p, t }) {
-    const photos = PRODUCT_PHOTOS[p.slug] || {
-        productImg: p.image,
-        seaweedImg: IMG.seaweedKelpForest,
-        seaweedAlt: "Atlantic seaweed — source of McLir liquid fertiliser",
-    };
+    const productImg = PRODUCT_IMG[p.slug] || p.image;
 
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
 
-            {/* ── Left panel: Granulates-style premium card ── */}
+            {/* ── Left panel: identical structure to Granulates ── */}
             <div className="lg:col-span-5">
                 <div className="rounded-3xl bg-gradient-to-br from-[#0B1E14] to-[#050B14] border border-kelp-500/20 overflow-hidden h-full relative shadow-[0_30px_70px_-25px_rgba(0,0,0,0.9)]">
 
-                    {/* Top — product bottle, fills card cleanly */}
-                    <div className="relative">
-                        <img
-                            src={photos.productImg}
-                            alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
-                            className="w-full aspect-[4/5] object-cover"
-                            loading="eager"
-                            data-testid={`liquid-image-${p.slug}`}
-                        />
-                        {/* Gradient blending bottle into seaweed section */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/20 to-transparent pointer-events-none" />
-                    </div>
+                    {/* Single product bottle image — full resolution, no darkening */}
+                    <img
+                        src={productImg}
+                        alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
+                        className="w-full aspect-[4/5] object-cover"
+                        width="3840"
+                        height="4800"
+                        loading="eager"
+                        data-testid={`liquid-image-${p.slug}`}
+                    />
 
-                    {/* Bottom — seaweed photo, wide cinematic, no cropping */}
-                    <div className="relative">
-                        <img
-                            src={photos.seaweedImg}
-                            alt={photos.seaweedAlt}
-                            className="w-full aspect-[16/7] object-cover"
-                            loading="lazy"
-                        />
-                        {/* Subtle bottom gradient for badge readability */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#050B14]/80 to-transparent pointer-events-none" />
-                    </div>
+                    {/* Bottom-only gradient — only covers lower 30%, top 70% stays fully clear */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/10 to-transparent pointer-events-none" />
 
-                    {/* Floating info badge — identical pattern to Granulates */}
+                    {/* Floating badge — identical to Granulates */}
                     <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/70 border border-kelp-500/25 text-center backdrop-blur-md">
                         <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-kelp-300">
                             {p.line}
                         </div>
-                        <div className="font-serif text-base italic text-white mt-0.5">
-                            "{p.tagline}"
+                        <div className="font-serif text-lg text-white mt-0.5">
+                            {p.title}
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            {/* ── Right panel: product detail (unchanged) ── */}
+            {/* ── Right panel: unchanged ── */}
             <div className="lg:col-span-7">
                 <div className="eyebrow">{p.line}</div>
                 <h3
