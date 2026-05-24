@@ -261,7 +261,7 @@ export const PROCESS_STEPS = [
         n: "07",
         title: "Granulate sizing & screening",
         desc: "The dried material is sized and screened to particle bands suitable for soil broadcast, turf top-dressing and NPK blending.",
-        img: "https://images.unsplash.com/photo-1647012250603-9f02b8343af9?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+        img: "/granulate.webp",
     },
     {
         n: "08",
