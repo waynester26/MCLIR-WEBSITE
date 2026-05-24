@@ -23,7 +23,7 @@ function ProductPanel({ p, t }) {
             <div className="lg:col-span-5">
                 <div className="liquid-vessel rounded-3xl p-6 sm:p-8 h-full flex items-center justify-center relative overflow-hidden">
                     <img
-                        src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200"
+                        src="https://images.pexels.com/photos/12829684/pexels-photo-12829684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200"
                         alt="Fresh Atlantic seaweed kelp underwater"
                         className="absolute inset-0 w-full h-full object-cover opacity-80"
                         loading="lazy"
