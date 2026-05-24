@@ -13,7 +13,7 @@ export const BRAND = {
     address: "Belderbusch 10, Plombières, Belgium",
     phone: "+49 177 1546204",
     emergency: "+49 177 9253050",
-    logo: "https://customer-assets.emergentagent.com/job_seaweed-bio-products/artifacts/6x88xdtg_Mclir%20Logo.png",
+    logo: "/mclir-logo.png",
 };
 
 export const HERO_IMG =
