@@ -42,8 +42,8 @@ export const IMG = {
 
     // Liquid / bottle visuals
     liquidBottle: "https://images.unsplash.com/photo-1567001847230-ed5da95bd055?auto=format&fit=crop&w=900&q=80",
-    coldPressLabel10: "https://customer-assets.emergentagent.com/job_seaweed-turf-premium/artifacts/2wkzdq3d_Cold%20Press%2010.png",
-    coldPressLabel15: "https://customer-assets.emergentagent.com/job_seaweed-turf-premium/artifacts/zmazqlqm_Cold%20Press%2015.png",
+    coldPressLabel10: "https://images.unsplash.com/photo-1582647509711-c8aa8a8bda71?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
+    coldPressLabel15: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?crop=entropy&cs=srgb&fm=jpg&q=85&w=900",
     amberLiquid: "https://images.unsplash.com/photo-1543362906-acfc16c67564?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
     foliarSpray: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
 };
