@@ -237,7 +237,7 @@ export const PROCESS_STEPS = [
         n: "03",
         title: "Seawater wash",
         desc: "Raw weed is washed with clean seawater to lift silt, sand and shell fragments while preserving the native mineral and bioactive profile.",
-        img: "https://images.unsplash.com/photo-1493997181344-712f2f19d87a?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+        img: "/seawater wash.png",
     },
     {
         n: "04",
@@ -249,7 +249,7 @@ export const PROCESS_STEPS = [
         n: "05",
         title: "Controlled drying — 75 °C",
         desc: "Drying takes place at a maximum of approximately 75 °C, low enough to safeguard heat-sensitive vitamins, alginates and bioactive compounds.",
-        img: "https://images.unsplash.com/photo-1565728744382-61accd4aa148?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+        img: "/ascophyllum.webp.png",
     },
     {
         n: "06",
