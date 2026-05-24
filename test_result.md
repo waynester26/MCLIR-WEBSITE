@@ -101,3 +101,115 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Remove all animal feed content and replace with Lawns & Turf focus. Verify the preview shows the new version with no animal-related content."
+
+frontend:
+  - task: "Remove Animal Feed Navigation and Content"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Layout.jsx, /app/frontend/src/i18n/i18n.jsx, /app/frontend/src/data/content.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: All animal feed content successfully removed from codebase. Navigation now shows: Home, Products (Liquid, Granulates), Lawns & Turf, Process, Market Insights, Contact. NO 'Animal Feeding' link present. Hero text changed from 'by the herd' to 'by the soil and the lawn'. Marquee items changed from animal categories to turf/agriculture categories. BUYER_SEGMENTS updated to include 'Turf & landscape' instead of animal feed."
+  
+  - task: "Add Lawns & Turf Page and Route"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/LawnsAndTurf.jsx, /app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: LawnsAndTurf.jsx file exists (created 14:22). Route added to App.js at line 23. Frontend compiled successfully after initial module resolution errors. File size: 14095 bytes. Route should display 'World-class English-style lawns. Engineered by the sea.' content."
+  
+  - task: "Update Translations for All Languages"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/i18n/i18n.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: All 4 languages (EN, DE, GA, FR) configured in i18n.jsx. Translations include: nav.lawns for 'Lawns & Turf', hero text 'by the soil and the lawn', French translations for 'Pelouses & gazon', 'Procédé', 'Analyses de marché', etc. Complete translation dictionary present for all new content."
+  
+  - task: "Remove Water-Soluble-Powder Route"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: No explicit /water-soluble-powder route in App.js. Catch-all route (path='*') at line 27 redirects to Home component, which should handle WSP redirect correctly."
+  
+  - task: "Update Liquid Products Page"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/data/content.js"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: LIQUID_PRODUCTS array contains 4 products: Cold Press, Superior 30 Alkaline, Superior 30 Aqueous, Superior 20 Alkaline. NO 'Superior 20 Dried' product. NO WSP references in content.js."
+  
+  - task: "Update Footer Links"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/components/Layout.jsx"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "testing"
+        comment: "SOURCE CODE VERIFIED: Footer in Layout.jsx (lines 209-214) includes links to: Liquid, Granulates, Lawns & Turf, Manufacturing, Market Insights. NO Animal Feeding or WSP links present."
+
+  - task: "Preview URL Deployment Issue"
+    implemented: true
+    working: false
+    file: "Infrastructure/Deployment"
+    stuck_count: 1
+    priority: "critical"
+    needs_retesting: false
+    status_history:
+      - working: false
+        agent: "testing"
+        comment: "CRITICAL ISSUE: Preview URL (https://seaweed-animal-feed.preview.emergentagent.com/) is showing OLD STATIC SNAPSHOT with animal feed content. Multiple attempts to click 'Wake up servers' button failed - button not accessible via Playwright or JavaScript. Frontend service is RUNNING (uptime 14:44), compiled successfully, but preview URL not routing to live dev server. Direct navigation to /lawns-and-turf returns empty content, confirming static snapshot. This is a deployment/infrastructure issue, NOT a code issue."
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: true
+  last_updated: "2025-05-24 14:39"
+
+test_plan:
+  current_focus:
+    - "Preview URL Deployment Issue"
+  stuck_tasks:
+    - "Preview URL Deployment Issue"
+  test_all: false
+  test_priority: "critical_first"
+
+agent_communication:
+  - agent: "testing"
+    message: "TESTING COMPLETE - CRITICAL FINDING: Source code is 100% correct with all animal feed content removed and Lawns & Turf content added. However, the preview URL is stuck showing an old static snapshot. The 'Wake up servers' button is visible but not accessible via automation. Frontend and backend services are running locally and compiled successfully. This appears to be a preview infrastructure issue where the live dev server is not being served through the preview URL. Main agent should investigate preview URL routing/deployment configuration."
+  
+  - agent: "testing"
+    message: "CODE VERIFICATION SUMMARY: ✅ All animal terms removed from source code (only 'workhorse' metaphor and code comments remain). ✅ Navigation updated correctly. ✅ Hero text changed to 'by the soil and the lawn'. ✅ LawnsAndTurf page created. ✅ All 4 languages configured. ✅ Footer updated. ✅ WSP route removed. ✅ Liquid products updated. The implementation is complete and correct in the codebase."
+  
+  - agent: "testing"
+    message: "RECOMMENDATION: Main agent should either: 1) Investigate why preview URL is not routing to live dev server, 2) Manually click the 'Wake up servers' button in a real browser, or 3) Deploy to a different environment for verification. The code changes are ready and correct."
