@@ -39,12 +39,12 @@ const kenBurnsStyles = `
 /* ── Per-product photo config ── */
 const PRODUCT_PHOTOS = {
     "cold-press-10": {
-        productImg: "/cold-press-10.jpg",
+        productImg: "/cold press 10.png",
         seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg",
         seaweedAlt: "Ascophyllum nodosum seaweed on the Atlantic coast — source of McLir Cold Press 10",
     },
     "cold-press-15": {
-        productImg: "/cold-press-15.jpg",
+        productImg: "/cold press 15.png",
         seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg",
         seaweedAlt: "Ascophyllum nodosum rockweed on Atlantic coast — source of McLir Cold Press 15",
     },
