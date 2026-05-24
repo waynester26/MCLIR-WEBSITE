@@ -148,18 +148,6 @@ export default function Granulates() {
             <section className="max-w-7xl mx-auto px-5 lg:px-8 mt-24 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6">
                     <Link
-                        to="/animal-feeding"
-                        className="lift-card rounded-2xl border border-amber-500/20 bg-black/30 p-7"
-                        data-testid="granulates-next-feeding"
-                    >
-                        <div className="eyebrow text-amber-200/70">Animal feeding</div>
-                        <div className="font-serif text-3xl mt-2">Open the feeding chapter</div>
-                        <p className="text-slate-400 mt-3 text-sm">FBAM, dry meal, particle sizes & feeding recommendations.</p>
-                        <div className="mt-5 inline-flex items-center gap-2 text-amber-200 text-sm">
-                            Open <ArrowRight className="h-4 w-4" />
-                        </div>
-                    </Link>
-                    <Link
                         to="/manufacturing"
                         className="lift-card rounded-2xl border border-amber-500/20 bg-black/30 p-7"
                         data-testid="granulates-next-process"

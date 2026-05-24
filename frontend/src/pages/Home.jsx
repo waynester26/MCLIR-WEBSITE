@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Droplets, Sprout, FlaskConical, Beef, BarChart3, Mail, ChevronRight, Leaf, ShieldCheck, Globe2 } from "lucide-react";
+import { ArrowRight, Droplets, Sprout, BarChart3, Mail, Leaf, ShieldCheck, Globe2 } from "lucide-react";
 import { BRAND, HERO_IMG, FAQS } from "@/data/content";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useT } from "@/i18n/i18n";
@@ -9,8 +9,6 @@ const useFamilies = () => {
     return [
         { to: "/liquid", eyebrow: t("fam.liquid.eyebrow"), title: t("fam.liquid.title"), copy: t("fam.liquid.body"), icon: Droplets, accent: "from-ink-700 to-ink-900" },
         { to: "/granulates", eyebrow: t("fam.granulates.eyebrow"), title: t("fam.granulates.title"), copy: t("fam.granulates.body"), icon: Sprout, accent: "from-earth-900 to-[#0E0B09]" },
-        { to: "/water-soluble-powder", eyebrow: t("fam.wsp.eyebrow"), title: t("fam.wsp.title"), copy: t("fam.wsp.body"), icon: FlaskConical, accent: "from-ink-700 to-ink-900" },
-        { to: "/animal-feeding", eyebrow: t("fam.feeding.eyebrow"), title: t("fam.feeding.title"), copy: t("fam.feeding.body"), icon: Beef, accent: "from-kelp-700 to-ink-900" },
     ];
 };
 
@@ -48,42 +46,40 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(46,92,66,0.18),transparent_60%)]" />
                 </div>
                 <div className="relative max-w-7xl mx-auto px-5 lg:px-8 pb-20 pt-32 w-full">
-                    <div className="max-w-3xl">
-                        <div className="eyebrow rise" data-testid="hero-eyebrow">
-                            {t("hero.eyebrow")}
-                        </div>
-                        <h1
-                            className="rise-d1 mt-5 font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-white"
-                            data-testid="hero-title"
-                        >
-                            {t("hero.title.line1")}<br />
-                            <span className="text-kelp-400 italic">{t("hero.title.italic")}</span> {t("hero.title.line2_en")}
-                        </h1>
+                    <div className="grid lg:grid-cols-2 gap-8 items-start">
+                        <div className="max-w-3xl">
+                            <div className="eyebrow rise" data-testid="hero-eyebrow">
+                                {t("hero.eyebrow")}
+                            </div>
+                            <h1
+                                className="rise-d1 mt-5 font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight text-white"
+                                data-testid="hero-title"
+                            >
+                                {t("hero.title.line1")}<br />
+                                <span className="text-kelp-400 italic">{t("hero.title.italic")}</span> {t("hero.title.line2_en")}
+                            </h1>
                         <p className="rise-d2 mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed" data-testid="hero-sub">
                             {t("hero.sub")}
                         </p>
-                        <div className="rise-d3 mt-8 flex flex-wrap gap-3" data-testid="hero-cta-row">
-                            <Link
-                                to="/liquid"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
-                                data-testid="hero-cta-explore-liquid"
-                            >
-                                {t("cta.explore_liquid")} <ArrowRight className="h-4 w-4" />
-                            </Link>
-                            <Link
-                                to="/animal-feeding"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-colors"
-                                data-testid="hero-cta-animal-feeding"
-                            >
-                                {t("cta.feeding_chapter")} <ChevronRight className="h-4 w-4" />
-                            </Link>
-                            <a
-                                href={`mailto:${BRAND.email}`}
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-slate-200 hover:text-white text-sm font-medium transition-colors"
-                                data-testid="hero-cta-mail"
-                            >
-                                <Mail className="h-4 w-4" /> {BRAND.email}
-                            </a>
+                            <div className="rise-d3 mt-8 flex flex-wrap gap-3" data-testid="hero-cta-row">
+                                <Link
+                                    to="/liquid"
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
+                                    data-testid="hero-cta-explore-liquid"
+                                >
+                                    {t("cta.explore_liquid")} <ArrowRight className="h-4 w-4" />
+                                </Link>
+                                <a
+                                    href={`mailto:${BRAND.email}`}
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-slate-200 hover:text-white text-sm font-medium transition-colors"
+                                    data-testid="hero-cta-mail"
+                                >
+                                    <Mail className="h-4 w-4" /> {BRAND.email}
+                                </a>
+                            </div>
+                        </div>
+                        <div className="hidden lg:flex items-center justify-end" data-testid="hero-logo">
+                            <img src={BRAND.logo} alt="McLir Seaweed" className="h-72 w-72 rounded-2xl object-contain" />
                         </div>
                     </div>
 
@@ -192,45 +188,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ANIMAL FEED CTA */}
-            <section className="relative py-24 sm:py-32 noise-overlay earth-bg" data-testid="animal-cta-section">
-                <div className="relative z-10 max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
-                    <div className="md:col-span-7">
-                        <div className="eyebrow text-amber-200/70">Chapter · Animal feeding</div>
-                        <h2 className="font-serif text-4xl sm:text-5xl mt-3 text-white leading-tight">
-                            A natural multimineral feed material — readily absorbed, vegetable origin, suitable for animals of all ages.
-                        </h2>
-                        <p className="mt-5 text-slate-300 max-w-xl leading-relaxed">
-                            Atlantic Ascophyllum, low-temperature dried, fine-milled to your micron specification.
-                            Used by feed compounders, dairy & beef farms, equine yards, sheep flocks, goat herds,
-                            poultry operations and pet-food formulators across Europe.
-                        </p>
-                        <div className="mt-7 flex flex-wrap gap-3">
-                            <Link
-                                to="/animal-feeding"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-amber-600/90 hover:bg-amber-500 text-white text-sm font-medium transition-colors"
-                                data-testid="animal-cta-open-chapter"
-                            >
-                                Open the animal feeding chapter <ArrowRight className="h-4 w-4" />
-                            </Link>
-                            <Link
-                                to="/manufacturing"
-                                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white text-sm font-medium transition-colors"
-                                data-testid="animal-cta-process"
-                            >
-                                See the manufacturing process
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="md:col-span-5">
-                        <img
-                            src="https://images.unsplash.com/photo-1659148566517-9dfe52f802ac?crop=entropy&cs=srgb&fm=jpg&q=85&w=900"
-                            alt="Healthy dairy herd on pasture"
-                            className="w-full h-[420px] object-cover rounded-2xl border border-white/10"
-                        />
-                    </div>
-                </div>
-            </section>
+            {/* PROCESS TEASER */}
 
             {/* PROCESS TEASER */}
             <section className="py-24 sm:py-32" data-testid="process-teaser-section">
