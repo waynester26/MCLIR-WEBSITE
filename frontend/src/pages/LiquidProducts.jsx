@@ -16,36 +16,16 @@ import {
 import { LIQUID_PRODUCTS, BRAND, IMG } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
-/* ── Ken Burns keyframes ── */
-const kenBurnsStyles = `
-  @keyframes kenBurnsRight {
-    0%   { transform: scale(1.0) translate(0%, 0%); }
-    100% { transform: scale(1.08) translate(1.5%, 0.8%); }
-  }
-  @keyframes kenBurnsLeft {
-    0%   { transform: scale(1.0) translate(0%, 0%); }
-    100% { transform: scale(1.08) translate(-1.5%, 0.8%); }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .kb-right {
-      animation: kenBurnsRight 10s ease-in-out infinite alternate;
-    }
-    .kb-left {
-      animation: kenBurnsLeft 10s ease-in-out infinite alternate;
-    }
-  }
-`;
-
 /* ── Per-product photo config ── */
 const PRODUCT_PHOTOS = {
     "cold-press-10": {
         productImg: "/cold press 10.png",
-        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg",
+        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg?w=3840&q=95",
         seaweedAlt: "Ascophyllum nodosum seaweed on the Atlantic coast — source of McLir Cold Press 10",
     },
     "cold-press-15": {
         productImg: "/cold press 15.png",
-        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg",
+        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg?w=3840&q=95",
         seaweedAlt: "Ascophyllum nodosum rockweed on Atlantic coast — source of McLir Cold Press 15",
     },
 };
@@ -60,41 +40,41 @@ function ProductPanel({ p, t }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
 
-            {/* ── Left panel: 2 stacked animated photos ── */}
+            {/* ── Left panel: 2 stacked photos, no animation ── */}
             <div className="lg:col-span-5">
                 <div className="liquid-vessel rounded-3xl overflow-hidden h-full flex flex-col" style={{ minHeight: "580px" }}>
 
-                    {/* Top photo — product bottle */}
-                    <div className="relative overflow-hidden" style={{ flex: "1 1 50%" }}>
+                    {/* Top photo — full bottle visible, object-contain on dark bg */}
+                    <div
+                        className="relative overflow-hidden bg-[#050B14]"
+                        style={{ flex: "2 1 60%" }}
+                    >
                         <img
                             src={photos.productImg}
                             alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
-                            className="kb-right absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-contain"
                             loading="eager"
                             data-testid={`liquid-image-${p.slug}`}
-                            style={{ transformOrigin: "center center" }}
                         />
-                        {/* Subtle bottom fade to blend into second photo */}
-                        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-black/40 pointer-events-none" />
                         {/* Premium inset ring */}
-                        <div className="absolute inset-0 ring-1 ring-inset ring-white/15 rounded-t-3xl pointer-events-none" />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
                         {/* Concentration badge */}
                         <div className="absolute top-4 left-4 bg-black/55 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-mono text-kelp-300 border border-kelp-500/40 shadow-lg">
                             {p.line}
                         </div>
                     </div>
 
-                    {/* Bottom photo — Ascophyllum nodosum Atlantic coast */}
-                    <div className="relative overflow-hidden" style={{ flex: "1 1 50%" }}>
+                    {/* Bottom photo — seaweed, 8K quality, clean no overlays */}
+                    <div
+                        className="relative overflow-hidden"
+                        style={{ flex: "1 1 40%" }}
+                    >
                         <img
                             src={photos.seaweedImg}
                             alt={photos.seaweedAlt}
-                            className="kb-left absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover"
                             loading="lazy"
-                            style={{ transformOrigin: "center center" }}
                         />
-                        {/* Subtle top fade */}
-                        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
                         {/* Caption at bottom */}
                         <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/65 to-transparent pointer-events-none">
                             <p className="text-[11px] font-mono text-kelp-300 tracking-widest uppercase">
@@ -302,8 +282,6 @@ export default function LiquidProducts() {
 
     return (
         <div className="pt-12 pb-32" data-testid="liquid-page">
-            {/* Inject Ken Burns keyframes once */}
-            <style>{kenBurnsStyles}</style>
 
             {/* Atmospheric backdrop */}
             <section className="relative overflow-hidden">
