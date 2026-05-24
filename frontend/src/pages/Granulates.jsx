@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sprout, Package, Clock, ShieldCheck } from "lucide-react";
-import { GRANULATES, BRAND } from "@/data/content";
+import { GRANULATES, BRAND, IMG } from "@/data/content";
 import { useT } from "@/i18n/i18n";
+
+const GRANULATE_IMAGES = [IMG.granulateNatural, IMG.granulateOnSoil];
 
 export default function Granulates() {
     const t = useT();
@@ -22,9 +24,9 @@ export default function Granulates() {
                     </div>
                     <div className="lg:col-span-5 grid grid-cols-3 gap-3 text-center">
                         {[
-                            { v: "12 wk", k: "Release activity in soil" },
-                            { v: "65 %", k: "Organic matter typical" },
-                            { v: "2 – 6 mm", k: "Conditioner particle band" },
+                            { v: "12 wk", k: t("gran.stat.release") },
+                            { v: "65 %", k: t("gran.stat.om") },
+                            { v: "2 – 6 mm", k: t("gran.stat.particle") },
                         ].map((s) => (
                             <div key={s.k} className="rounded-xl border border-amber-500/20 bg-black/30 p-4" data-testid={`granulate-stat-${s.v}`}>
                                 <div className="font-serif text-2xl text-amber-200">{s.v}</div>
@@ -41,42 +43,27 @@ export default function Granulates() {
                 <section key={g.slug} className="max-w-7xl mx-auto px-5 lg:px-8 mt-24 relative z-10" data-testid={`granulate-section-${g.slug}`}>
                     <div className="grid lg:grid-cols-12 gap-10">
                         <div className="lg:col-span-5">
-                            <div className="rounded-3xl bg-gradient-to-br from-[#2A1A0F] to-[#0E0B09] border border-amber-500/15 p-8 h-full relative overflow-hidden">
+                            {/* Premium 3D-feel granulate visual: real product photography over warm earthy gradient */}
+                            <div className="rounded-3xl bg-gradient-to-br from-[#2A1A0F] to-[#0E0B09] border border-amber-500/20 overflow-hidden h-full relative shadow-[0_30px_70px_-25px_rgba(0,0,0,0.9)]">
                                 <img
-                                    src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=900&q=80"
-                                    alt=""
-                                    className="absolute inset-0 w-full h-full object-cover opacity-25"
+                                    src={GRANULATE_IMAGES[idx % GRANULATE_IMAGES.length]}
+                                    alt={`Natural seaweed soil conditioner — ${g.name}`}
+                                    className="w-full aspect-[4/5] object-cover"
+                                    loading="lazy"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#1A1412]/85 via-[#0E0B09]/80 to-[#0E0B09]/95" />
-                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(139,90,43,0.18),transparent_55%)]" />
-                                {/* Decorative granule cluster */}
-                                <div className="aspect-[4/5] relative z-10 flex items-center justify-center">
-                                    <div className="grid grid-cols-7 gap-1.5 rotate-[-8deg]">
-                                        {Array.from({ length: 49 }).map((_, i) => {
-                                            const sizes = idx === 0 ? [10, 13, 16, 12] : [7, 9, 8, 10];
-                                            const sz = sizes[i % sizes.length];
-                                            const tones = ["#3F2A18", "#5C3A1E", "#8B5A2B", "#2E5C42", "#1F3F2E"];
-                                            const c = tones[i % tones.length];
-                                            return (
-                                                <span
-                                                    key={i}
-                                                    className="rounded-full"
-                                                    style={{
-                                                        width: sz,
-                                                        height: sz,
-                                                        background: c,
-                                                        boxShadow: "inset 1px 1px 0 rgba(255,255,255,0.06), 0 1px 2px rgba(0,0,0,0.6)",
-                                                    }}
-                                                />
-                                            );
-                                        })}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0E0B09] via-[#0E0B09]/30 to-transparent" />
+                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(46,92,66,0.18),transparent_55%)]" />
+
+                                {/* Soft floating particles for 3D feel */}
+                                <span className="absolute top-12 right-10 h-1.5 w-1.5 rounded-full bg-amber-100/60 blur-[1px]" />
+                                <span className="absolute top-32 right-24 h-1 w-1 rounded-full bg-amber-100/40 blur-[1px]" />
+                                <span className="absolute bottom-40 left-12 h-2 w-2 rounded-full bg-kelp-400/40 blur-[1px]" />
+
+                                <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/70 border border-amber-500/25 text-center backdrop-blur-md">
+                                    <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-amber-200/80">
+                                        {t("gran.label.granulate")}
                                     </div>
-                                </div>
-                                <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/60 border border-amber-500/20 text-center backdrop-blur-sm">
-                                    <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-amber-200/70">
-                                        McLIR Granulate
-                                    </div>
-                                    <div className="font-serif text-lg mt-0.5">
+                                    <div className="font-serif text-lg mt-0.5 text-white">
                                         {g.spec.find(([k]) => k === "Particle size")?.[1]}
                                     </div>
                                 </div>
@@ -91,7 +78,7 @@ export default function Granulates() {
                             <p className="mt-4 text-slate-300 leading-relaxed">{g.summary}</p>
 
                             <div className="mt-6 rounded-xl border border-amber-500/15 bg-black/30 overflow-hidden">
-                                <div className="px-5 py-3 bg-white/5 eyebrow text-amber-200/70">Technical specification</div>
+                                <div className="px-5 py-3 bg-white/5 eyebrow text-amber-200/70">{t("gran.spec")}</div>
                                 <table className="tech-table w-full">
                                     <tbody>
                                         {g.spec.map(([k, v]) => (
@@ -105,7 +92,7 @@ export default function Granulates() {
                             </div>
 
                             <div className="mt-6">
-                                <div className="eyebrow text-amber-200/70 mb-3">Use cases</div>
+                                <div className="eyebrow text-amber-200/70 mb-3">{t("gran.usecases")}</div>
                                 <div className="flex flex-wrap gap-2">
                                     {g.useCases.map((u) => (
                                         <span
@@ -120,15 +107,15 @@ export default function Granulates() {
 
                             <div className="grid sm:grid-cols-3 gap-3 mt-6 text-sm">
                                 <div className="rounded-lg border border-amber-500/15 bg-black/30 p-4">
-                                    <div className="eyebrow text-amber-200/70"><Clock className="inline h-3 w-3 mr-1" /> Application rate</div>
+                                    <div className="eyebrow text-amber-200/70"><Clock className="inline h-3 w-3 mr-1" /> {t("gran.rate")}</div>
                                     <div className="mt-1 text-slate-200">{g.rate}</div>
                                 </div>
                                 <div className="rounded-lg border border-amber-500/15 bg-black/30 p-4">
-                                    <div className="eyebrow text-amber-200/70"><Package className="inline h-3 w-3 mr-1" /> Packaging</div>
+                                    <div className="eyebrow text-amber-200/70"><Package className="inline h-3 w-3 mr-1" /> {t("gran.packaging")}</div>
                                     <div className="mt-1 text-slate-200">{g.packaging.join(" · ")}</div>
                                 </div>
                                 <div className="rounded-lg border border-amber-500/15 bg-black/30 p-4">
-                                    <div className="eyebrow text-amber-200/70"><ShieldCheck className="inline h-3 w-3 mr-1" /> Storage</div>
+                                    <div className="eyebrow text-amber-200/70"><ShieldCheck className="inline h-3 w-3 mr-1" /> {t("gran.storage")}</div>
                                     <div className="mt-1 text-slate-200">{g.storage}</div>
                                 </div>
                             </div>
@@ -138,7 +125,7 @@ export default function Granulates() {
                                 className="mt-7 inline-flex items-center gap-2 px-5 py-3 rounded-full bg-amber-600/90 hover:bg-amber-500 text-white text-sm font-medium transition-colors"
                                 data-testid={`granulate-sample-cta-${g.slug}`}
                             >
-                                Request a sample <ArrowRight className="h-4 w-4" />
+                                {t("cta.request_sample")} <ArrowRight className="h-4 w-4" />
                             </a>
                         </div>
                     </div>
@@ -148,15 +135,27 @@ export default function Granulates() {
             <section className="max-w-7xl mx-auto px-5 lg:px-8 mt-24 relative z-10">
                 <div className="grid md:grid-cols-2 gap-6">
                     <Link
+                        to="/lawns-and-turf"
+                        className="lift-card rounded-2xl border border-kelp-500/30 bg-black/30 p-7"
+                        data-testid="granulates-next-lawns"
+                    >
+                        <div className="eyebrow text-kelp-300">{t("page.lawns.eyebrow")}</div>
+                        <div className="font-serif text-3xl mt-2">{t("page.lawns.title")}</div>
+                        <p className="text-slate-400 mt-3 text-sm">{t("lawns.programme.body")}</p>
+                        <div className="mt-5 inline-flex items-center gap-2 text-kelp-300 text-sm">
+                            {t("cta.open")} <ArrowRight className="h-4 w-4" />
+                        </div>
+                    </Link>
+                    <Link
                         to="/manufacturing"
                         className="lift-card rounded-2xl border border-amber-500/20 bg-black/30 p-7"
                         data-testid="granulates-next-process"
                     >
-                        <div className="eyebrow text-amber-200/70">Process</div>
-                        <div className="font-serif text-3xl mt-2">From harvest to bay number</div>
-                        <p className="text-slate-400 mt-3 text-sm">75 °C drying, 12 – 14 % moisture, fully traceable.</p>
+                        <div className="eyebrow text-amber-200/70">{t("nav.process")}</div>
+                        <div className="font-serif text-3xl mt-2">{t("process.teaser.title")}</div>
+                        <p className="text-slate-400 mt-3 text-sm">{t("process.teaser.body")}</p>
                         <div className="mt-5 inline-flex items-center gap-2 text-amber-200 text-sm">
-                            Open <ArrowRight className="h-4 w-4" />
+                            {t("cta.open")} <ArrowRight className="h-4 w-4" />
                         </div>
                     </Link>
                 </div>

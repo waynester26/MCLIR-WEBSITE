@@ -4,7 +4,7 @@ import { ArrowRight, Droplet, Beaker, FileText, Package, Clock, ShieldCheck } fr
 import { LIQUID_PRODUCTS, BRAND } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
-function ProductPanel({ p }) {
+function ProductPanel({ p, t }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
             {/* Visual — premium liquid vessel with kelp backdrop */}
@@ -31,7 +31,7 @@ function ProductPanel({ p }) {
                             </div>
                             <div className="absolute inset-x-4 inset-y-16 rounded-xl bg-gradient-to-b from-kelp-500/30 to-kelp-700/40 blur-md opacity-60" />
                         </div>
-                        <div className="mt-6 eyebrow text-slate-200">100 % Ascophyllum nodosum · Atlantic origin</div>
+                        <div className="mt-6 eyebrow text-slate-200">100 % Ascophyllum nodosum · {t("hero.medallion_caption")}</div>
                     </div>
                 </div>
             </div>
@@ -46,11 +46,11 @@ function ProductPanel({ p }) {
 
                 <div className="grid sm:grid-cols-2 gap-3 mt-6 text-sm">
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Droplet className="inline h-3 w-3 mr-1" /> Source</div>
+                        <div className="eyebrow"><Droplet className="inline h-3 w-3 mr-1" /> {t("liquid.source")}</div>
                         <div className="mt-1 text-slate-200">{p.source}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Beaker className="inline h-3 w-3 mr-1" /> Extraction</div>
+                        <div className="eyebrow"><Beaker className="inline h-3 w-3 mr-1" /> {t("liquid.extraction")}</div>
                         <div className="mt-1 text-slate-200">{p.method}</div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ function ProductPanel({ p }) {
                 {/* Spec table */}
                 <div className="mt-7 rounded-xl border border-white/10 overflow-hidden">
                     <div className="px-5 py-3 bg-white/5 eyebrow flex items-center gap-2">
-                        <FileText className="h-3 w-3" /> Technical specification
+                        <FileText className="h-3 w-3" /> {t("liquid.spec")}
                     </div>
                     <table className="tech-table w-full">
                         <tbody>
@@ -74,7 +74,7 @@ function ProductPanel({ p }) {
 
                 {/* Bioactives */}
                 <div className="mt-7">
-                    <div className="eyebrow mb-3">Bioactive components</div>
+                    <div className="eyebrow mb-3">{t("liquid.bioactives")}</div>
                     <div className="flex flex-wrap gap-2">
                         {p.bioactives.map((b) => (
                             <span
@@ -89,7 +89,7 @@ function ProductPanel({ p }) {
 
                 {/* Use cases */}
                 <div className="mt-7">
-                    <div className="eyebrow mb-3">Use cases</div>
+                    <div className="eyebrow mb-3">{t("liquid.usecases")}</div>
                     <ul className="grid sm:grid-cols-2 gap-2 text-sm text-slate-300">
                         {p.useCases.map((u) => (
                             <li key={u} className="flex gap-2">
@@ -103,21 +103,21 @@ function ProductPanel({ p }) {
                 {/* Rate, packaging, storage */}
                 <div className="grid sm:grid-cols-3 gap-3 mt-7 text-sm">
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Clock className="inline h-3 w-3 mr-1" /> Rate</div>
+                        <div className="eyebrow"><Clock className="inline h-3 w-3 mr-1" /> {t("liquid.rate")}</div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.rate}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><Package className="inline h-3 w-3 mr-1" /> Packaging</div>
+                        <div className="eyebrow"><Package className="inline h-3 w-3 mr-1" /> {t("liquid.packaging")}</div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.packaging.join(" · ")}</div>
                     </div>
                     <div className="rounded-lg border border-white/10 p-4">
-                        <div className="eyebrow"><ShieldCheck className="inline h-3 w-3 mr-1" /> Storage & shelf life</div>
+                        <div className="eyebrow"><ShieldCheck className="inline h-3 w-3 mr-1" /> {t("liquid.storage")}</div>
                         <div className="mt-1 text-slate-200 leading-relaxed">{p.storage}</div>
                     </div>
                 </div>
 
                 <div className="mt-5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-200/80 font-mono">
-                    Batch note · {p.batchNote}
+                    {t("liquid.batch_note")} · {p.batchNote}
                 </div>
 
                 <div className="mt-7">
@@ -126,7 +126,7 @@ function ProductPanel({ p }) {
                         className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white text-sm font-medium transition-colors"
                         data-testid={`liquid-sample-cta-${p.slug}`}
                     >
-                        Request a sample <ArrowRight className="h-4 w-4" />
+                        {t("cta.request_sample")} <ArrowRight className="h-4 w-4" />
                     </a>
                 </div>
             </div>
@@ -171,37 +171,33 @@ export default function LiquidProducts() {
                 </div>
 
                 <div className="mt-12">
-                    <ProductPanel p={product} />
+                    <ProductPanel p={product} t={t} />
                 </div>
 
                 {/* CTA */}
                 <div className="mt-24 grid md:grid-cols-2 gap-6">
                     <Link
-                        to="/water-soluble-powder"
-                        className="lift-card rounded-2xl border border-white/10 bg-[#0A1628]/60 p-7"
-                        data-testid="liquid-next-wsp"
-                    >
-                        <div className="eyebrow">Next chapter</div>
-                        <div className="font-serif text-3xl mt-2">Water Soluble Powder</div>
-                        <p className="text-slate-400 mt-3 text-sm">
-                            For growers who need solid logistics with liquid performance.
-                        </p>
-                        <div className="mt-5 inline-flex items-center gap-2 text-kelp-400 text-sm">
-                            Open <ArrowRight className="h-4 w-4" />
-                        </div>
-                    </Link>
-                    <Link
                         to="/granulates"
                         className="lift-card rounded-2xl border border-white/10 bg-[#0A1628]/60 p-7"
                         data-testid="liquid-next-granulates"
                     >
-                        <div className="eyebrow">Or jump to</div>
-                        <div className="font-serif text-3xl mt-2">Granulates & Soil Conditioner</div>
-                        <p className="text-slate-400 mt-3 text-sm">
-                            Slow-release dried Ascophyllum, broadcast or blended.
-                        </p>
+                        <div className="eyebrow">{t("cta.drill_in")}</div>
+                        <div className="font-serif text-3xl mt-2">{t("fam.granulates.title")}</div>
+                        <p className="text-slate-400 mt-3 text-sm">{t("fam.granulates.body")}</p>
                         <div className="mt-5 inline-flex items-center gap-2 text-kelp-400 text-sm">
-                            Open <ArrowRight className="h-4 w-4" />
+                            {t("cta.open")} <ArrowRight className="h-4 w-4" />
+                        </div>
+                    </Link>
+                    <Link
+                        to="/lawns-and-turf"
+                        className="lift-card rounded-2xl border border-white/10 bg-[#0A1628]/60 p-7"
+                        data-testid="liquid-next-lawns"
+                    >
+                        <div className="eyebrow">{t("page.lawns.eyebrow")}</div>
+                        <div className="font-serif text-3xl mt-2">{t("page.lawns.title")}</div>
+                        <p className="text-slate-400 mt-3 text-sm">{t("lawns.programme.body")}</p>
+                        <div className="mt-5 inline-flex items-center gap-2 text-kelp-400 text-sm">
+                            {t("cta.open")} <ArrowRight className="h-4 w-4" />
                         </div>
                     </Link>
                 </div>

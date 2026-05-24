@@ -10,7 +10,7 @@
   "action_items": [],
   "critical_code_review_comments": [
     "Layout.jsx footer link data-testid for water-soluble-powder uses 'footer-link-wsp' while other pages use full slug — minor inconsistency, not a bug",
-    "REACT_APP_BACKEND_URL in /app/frontend/.env is 'https://seaweed-animal-feed.preview.emergentagent.com' but review_request mentioned a different preview URL — confirmed working with the .env value (used as source of truth)",
+    "REACT_APP_BACKEND_URL in /app/frontend/.env is 'https://seaweed-turf-premium.preview.emergentagent.com' but review_request mentioned a different preview URL — confirmed working with the .env value (used as source of truth)",
     "All interactive elements have data-testid attributes (verified family cards, faq triggers 0-5, liquid tabs by slug, anchors, mobile nav, header CTA, footer links). Good coverage.",
     "Cormorant Garamond and Manrope fonts confirmed loaded via document.fonts API"
   ],
@@ -20,7 +20,7 @@
   "seed_data_creation": "None — pure static frontend",
   "retest_needed": false,
   "main_agent_can_self_test": true,
-  "context_for_next_testing_agent": "Site is at https://seaweed-animal-feed.preview.emergentagent.com. All routes verified: /, /liquid, /granulates, /water-soluble-powder, /animal-feeding, /manufacturing, /market-insights, /contact. Liquid tab labels render slug name with ' · ' (middle dot) instead of ' — ' em-dash, e.g. 'Superior 30 · Alkaline Extraction' — use data-testid='liquid-tab-{slug}' selectors (slugs: cold-press, superior-30-alkaline, superior-30-aqueous, superior-20-alkaline, superior-20-dried). Packaging strings use '1 000 kg big-bag' with thin space — search '1 000' or '1000' carefully. Recharts rendered 12 bars + 10 pie sectors visibly on dark background (verified screenshot). All mailto hrefs use correct address McLir@Sea-Weed.DE. Mobile viewport 390x844 tested for hamburger.",
+  "context_for_next_testing_agent": "Site is at https://seaweed-turf-premium.preview.emergentagent.com. All routes verified: /, /liquid, /granulates, /water-soluble-powder, /animal-feeding, /manufacturing, /market-insights, /contact. Liquid tab labels render slug name with ' · ' (middle dot) instead of ' — ' em-dash, e.g. 'Superior 30 · Alkaline Extraction' — use data-testid='liquid-tab-{slug}' selectors (slugs: cold-press, superior-30-alkaline, superior-30-aqueous, superior-20-alkaline, superior-20-dried). Packaging strings use '1 000 kg big-bag' with thin space — search '1 000' or '1000' carefully. Recharts rendered 12 bars + 10 pie sectors visibly on dark background (verified screenshot). All mailto hrefs use correct address McLir@Sea-Weed.DE. Mobile viewport 390x844 tested for hamburger.",
   "detailed_verifications": {
     "home": {
       "loaded": true,

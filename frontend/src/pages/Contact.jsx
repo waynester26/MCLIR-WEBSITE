@@ -3,21 +3,31 @@ import { Mail, MapPin, ArrowRight, Building2, Truck, FileCheck } from "lucide-re
 import { BRAND } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
-const TILES = [
-    { icon: Building2, label: "Operation", value: BRAND.location },
-    { icon: Mail, label: "E-mail", value: BRAND.email, href: `mailto:${BRAND.email}` },
-    { icon: Truck, label: "Logistics", value: "Pallet, big-bag, container" },
-    { icon: FileCheck, label: "Documentation", value: "EU spec sheets, MSDS, COA" },
-];
-
-const SUBJECTS = [
-    "Liquid Seaweed sample",
-    "Granulate sample",
-    "Distribution / partnership",
-];
-
 export default function Contact() {
     const tr = useT();
+    const TILES = [
+        { icon: Building2, label: tr("contact.tile.operation"), value: BRAND.location, key: "operation" },
+        { icon: Mail, label: tr("contact.tile.email"), value: BRAND.email, href: `mailto:${BRAND.email}`, key: "email" },
+        { icon: Truck, label: tr("contact.tile.logistics"), value: tr("contact.tile.logistics_value"), key: "logistics" },
+        { icon: FileCheck, label: tr("contact.tile.documentation"), value: tr("contact.tile.docs_value"), key: "documentation" },
+    ];
+
+    const SUBJECTS = [
+        tr("contact.subject.liquid"),
+        tr("contact.subject.granulate"),
+        tr("contact.subject.lawns"),
+        tr("contact.subject.distribution"),
+    ];
+
+    const LOGISTICS_LINES = [
+        "Pallet · 25 kg & 20 kg PE bags",
+        "Big-bag · 1 000 kg",
+        "IBC · 1 000 L liquids",
+        "Drum · 200 L liquids",
+        "Container · LCL & FCL",
+        "Express courier · samples",
+    ];
+
     return (
         <div className="pt-12 pb-32" data-testid="contact-page">
             <section className="max-w-7xl mx-auto px-5 lg:px-8">
@@ -39,10 +49,10 @@ export default function Contact() {
                                 const Wrap = t.href ? "a" : "div";
                                 return (
                                     <Wrap
-                                        key={t.label}
+                                        key={t.key}
                                         {...(t.href ? { href: t.href } : {})}
                                         className="rounded-2xl border border-white/10 bg-[#0A1628]/60 p-5 flex items-start gap-4 lift-card"
-                                        data-testid={`contact-tile-${t.label.toLowerCase()}`}
+                                        data-testid={`contact-tile-${t.key}`}
                                     >
                                         <div className="rounded-lg w-11 h-11 flex items-center justify-center bg-kelp-600/15 border border-kelp-500/30 shrink-0">
                                             <t.icon className="h-5 w-5 text-kelp-400" />
@@ -59,7 +69,7 @@ export default function Contact() {
 
                     <div className="lg:col-span-5">
                         <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-kelp-700/30 to-ink-700/40 p-8" data-testid="contact-mailbox">
-                            <div className="eyebrow">Direct mailbox</div>
+                            <div className="eyebrow">{tr("contact.direct_mailbox")}</div>
                             <div className="font-serif text-4xl mt-3 leading-tight break-words">
                                 <a href={`mailto:${BRAND.email}`} className="hover:text-kelp-300 transition-colors" data-testid="contact-email-large">
                                     {BRAND.email}
@@ -70,7 +80,7 @@ export default function Contact() {
                             </div>
 
                             <div className="mt-8">
-                                <div className="eyebrow mb-3">Quick subjects</div>
+                                <div className="eyebrow mb-3">{tr("contact.quick_subjects")}</div>
                                 <div className="space-y-2">
                                     {SUBJECTS.map((s) => (
                                         <a
@@ -92,18 +102,16 @@ export default function Contact() {
                 <div className="mt-20 rounded-3xl border border-white/10 bg-[#040912] p-10" data-testid="contact-export">
                     <div className="grid md:grid-cols-2 gap-8 items-center">
                         <div>
-                            <div className="eyebrow">Export ready</div>
+                            <div className="eyebrow">{tr("contact.export.eyebrow")}</div>
                             <h2 className="font-serif text-3xl mt-3 leading-tight">
-                                Plombières — central, bonded, container-ready.
+                                {tr("contact.export.title")}
                             </h2>
                             <p className="mt-4 text-slate-400 leading-relaxed">
-                                From Belgium we move pallets across the EU within days, big-bags and container loads
-                                worldwide on request. Documentation is prepared per market: EU feed material declarations,
-                                MSDS, COA, organic-input statements and customer-specific QA paperwork.
+                                {tr("contact.export.body")}
                             </p>
                         </div>
                         <ul className="space-y-3 text-sm text-slate-300">
-                            {["Pallet · 25 kg & 20 kg PE bags", "Big-bag · 1 000 kg", "IBC · 1 000 L liquids", "Drum · 200 L liquids", "Container · LCL & FCL", "Cold-chain · FBAM only"].map((l) => (
+                            {LOGISTICS_LINES.map((l) => (
                                 <li key={l} className="flex items-center gap-3 rounded-lg border border-white/5 bg-[#0A1628]/40 px-4 py-3">
                                     <span className="h-2 w-2 rounded-full bg-kelp-500" />
                                     <span>{l}</span>

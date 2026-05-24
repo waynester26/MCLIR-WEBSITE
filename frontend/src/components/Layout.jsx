@@ -16,6 +16,7 @@ const useNav = () => {
                 { to: "/granulates", label: t("nav.granulates") },
             ],
         },
+        { to: "/lawns-and-turf", label: t("nav.lawns") },
         { to: "/manufacturing", label: t("nav.process") },
         { to: "/market-insights", label: t("nav.insights") },
         { to: "/contact", label: t("nav.contact") },
@@ -207,8 +208,7 @@ export default function Layout({ children }) {
                         <ul className="space-y-2 text-sm">
                             <li><Link to="/liquid" className="hover:text-white text-slate-300" data-testid="footer-link-liquid">{t("nav.liquid")}</Link></li>
                             <li><Link to="/granulates" className="hover:text-white text-slate-300" data-testid="footer-link-granulates">{t("nav.granulates")}</Link></li>
-                            <li><Link to="/water-soluble-powder" className="hover:text-white text-slate-300" data-testid="footer-link-wsp">{t("nav.wsp")}</Link></li>
-                            <li><Link to="/animal-feeding" className="hover:text-white text-slate-300" data-testid="footer-link-animal-feeding">{t("nav.feeding")}</Link></li>
+                            <li><Link to="/lawns-and-turf" className="hover:text-white text-slate-300" data-testid="footer-link-lawns">{t("nav.lawns")}</Link></li>
                             <li><Link to="/manufacturing" className="hover:text-white text-slate-300" data-testid="footer-link-process">{t("nav.process")}</Link></li>
                             <li><Link to="/market-insights" className="hover:text-white text-slate-300" data-testid="footer-link-insights">{t("nav.insights")}</Link></li>
                         </ul>

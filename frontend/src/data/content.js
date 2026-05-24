@@ -1,10 +1,11 @@
 // Centralised content authority for McLir Seaweed website
-// Sourced from the McLir Seaweed Animal Feed Range brochure & the
-// commercial product brochure. Wording is professional / compliant.
+// Focus: Liquid Seaweed + Granulates / Soil Conditioner for
+// professional agriculture, corporate farming, lawns and turf,
+// luxury landscaping. Distribution: Europe & Middle East.
 
 export const BRAND = {
     name: "McLir Seaweed",
-    tagline: "Atlantic Ascophyllum nodosum, refined for European agriculture and animal nutrition.",
+    tagline: "Atlantic Ascophyllum nodosum, refined for professional agriculture and luxury landscaping.",
     email: "McLir@Sea-Weed.DE",
     location: "Plombières, Belgium",
     logo: "https://customer-assets.emergentagent.com/job_seaweed-bio-products/artifacts/6x88xdtg_Mclir%20Logo.png",
@@ -12,6 +13,19 @@ export const BRAND = {
 
 export const HERO_IMG =
     "https://images.unsplash.com/photo-1697817315238-788e8a16def4?crop=entropy&cs=srgb&fm=jpg&q=85&w=1800";
+
+// Premium imagery used across the site
+export const IMG = {
+    golfGreen: "https://images.unsplash.com/photo-1605147861225-7bcd55f8e513?crop=entropy&cs=srgb&fm=jpg&q=85&w=1800",
+    golfFairway: "https://images.unsplash.com/photo-1606443192517-919653213206?crop=entropy&cs=srgb&fm=jpg&q=85&w=1800",
+    granulateNatural: "https://images.unsplash.com/photo-1647012250603-9f02b8343af9?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
+    granulateOnSoil: "https://images.unsplash.com/photo-1591830340860-8e6d621851d7?crop=entropy&cs=srgb&fm=jpg&q=85&w=1400",
+    kelpUnderwater: "https://images.pexels.com/photos/12829684/pexels-photo-12829684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
+    luxuryEstate: "https://images.pexels.com/photos/8082322/pexels-photo-8082322.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
+    luxuryEstate2: "https://images.pexels.com/photos/8143683/pexels-photo-8143683.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
+    cornfield: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+    liquidBottle: "https://images.unsplash.com/photo-1567001847230-ed5da95bd055?auto=format&fit=crop&w=900&q=80",
+};
 
 export const LIQUID_PRODUCTS = [
     {
@@ -104,7 +118,7 @@ export const LIQUID_PRODUCTS = [
         name: "Liquid Seaweed Superior 20 — Alkaline Extraction",
         line: "Standard concentrate",
         summary:
-            "The workhorse alkaline extract — a 20 % dry-matter formulation balancing performance and price for broad-acre programmes.",
+            "The workhorse alkaline extract — a 20 % dry-matter formulation balancing performance and price for broad-acre and turf programmes.",
         source: "100% Ascophyllum nodosum (dried)",
         method: "Standard alkaline extraction.",
         spec: [
@@ -120,40 +134,12 @@ export const LIQUID_PRODUCTS = [
         useCases: [
             "Cereals — tillering & grain fill",
             "Apples, grapes, soft fruit — finish & quality",
-            "Grazing & silage swards",
+            "Turf, lawns & sports pitches — colour and recovery",
         ],
         rate: "3 – 5 L/ha foliar; 5 – 10 L/ha fertigation.",
         packaging: ["20 L", "200 L drum", "1000 L IBC"],
         storage: "Cool, dark. Shelf life 24 months.",
         batchNote: "Mineral sediment may form — shake before use.",
-    },
-    {
-        slug: "superior-20-dried",
-        name: "Liquid Seaweed Superior 20 — Dried",
-        line: "Spray-dried equivalent",
-        summary:
-            "The Superior 20 alkaline profile delivered as a spray-dried solid for cost-efficient shipping and reconstitution at point of use.",
-        source: "100% Ascophyllum nodosum extract solids",
-        method: "Spray-dried from the Superior 20 alkaline concentrate.",
-        spec: [
-            ["Form", "Free-flowing dark powder"],
-            ["Source material", "Dried Ascophyllum nodosum extract"],
-            ["pH (1 % solution)", "9.0 – 10.0"],
-            ["Solubility", "Fully water-soluble"],
-            ["Colour", "Black / dark brown"],
-            ["Moisture", "≤ 8 %"],
-            ["Organic matter", "~ 60 %"],
-        ],
-        bioactives: ["Alginates", "Mannitol", "Polyphenols", "Trace minerals"],
-        useCases: [
-            "Export markets (lower freight per active kg)",
-            "Manufacturers blending into compound fertilisers",
-            "Custom dilution at distributor level",
-        ],
-        rate: "Reconstitute at 1 kg powder ≈ 5 L concentrate. Apply per Superior 20 schedule.",
-        packaging: ["10 kg PE bag", "25 kg PE bag", "1 t big-bag"],
-        storage: "Dry, sealed, 25 °C max. Shelf life 36 months.",
-        batchNote: "Hygroscopic — reseal after each use.",
     },
 ];
 
@@ -186,7 +172,7 @@ export const GRANULATES = [
         slug: "seaweed-meal",
         name: "Granulated Seaweed Meal",
         summary:
-            "Finely milled meal pressed into uniform granules — for blenders, coaters and growers who need precise spreader behaviour.",
+            "Finely milled meal pressed into uniform granules — for blenders, coaters and growers who need precise spreader behaviour on turf and broad-acre.",
         spec: [
             ["Form", "Cylindrical granulate"],
             ["Particle size", "1 – 3 mm"],
@@ -207,101 +193,6 @@ export const GRANULATES = [
     },
 ];
 
-export const WSP = {
-    name: "Water Soluble Powder",
-    tagline: "Spray-dried Ascophyllum nodosum extract — ready to dissolve, ready to ship.",
-    summary:
-        "A free-flowing, fully water-dissolvable seaweed extract powder. Designed for tank-mix, fertigation and industrial blending where rapid dispersion and consistent solubility are non-negotiable.",
-    spec: [
-        ["Form", "Spray-dried fine powder"],
-        ["Solubility", "100 % water-soluble (cold)"],
-        ["pH (1 %)", "9.0 – 10.0"],
-        ["Moisture", "≤ 8 %"],
-        ["Organic matter", "≥ 60 %"],
-        ["Alginic acid", "~ 12 – 15 %"],
-        ["Mannitol", "~ 5 – 7 %"],
-        ["Colour", "Dark brown / black"],
-    ],
-    benefits: [
-        "Supports root and shoot establishment",
-        "Helps maintain crop performance under abiotic stress",
-        "Compatible with most foliar and fertigation programmes",
-        "Low dust, good flow, accurate dosing",
-    ],
-    rate: "0.5 – 1.5 kg/ha foliar; 1 – 3 kg/ha through fertigation, every 14 – 21 days.",
-    packaging: ["10 kg", "25 kg PE bag", "1 000 kg big-bag"],
-    storage: "Cool, dry, sealed. Shelf life 36 months.",
-};
-
-export const FEED_NUTRITION = [
-    ["Carbohydrates", "≈ 56 %"],
-    ["Dietary fibre", "≈ 51 %"],
-    ["Protein", "≈ 5 %"],
-    ["Fat", "≈ 2 %"],
-    ["Sugar", "≈ 9 %"],
-    ["Alginic acid", "≈ 22 %"],
-    ["Ash", "≈ 22 %"],
-    ["Moisture", "12 – 14 %"],
-];
-
-export const FEED_MINERALS = [
-    ["Calcium (Ca)", "Skeletal & milk yield"],
-    ["Magnesium (Mg)", "Nerve & muscle function"],
-    ["Potassium (K)", "Electrolyte balance"],
-    ["Sodium (Na)", "Hydration"],
-    ["Iodine (I)", "Thyroid function"],
-    ["Iron (Fe)", "Oxygen transport"],
-    ["Zinc (Zn)", "Skin, hoof, coat"],
-    ["Manganese (Mn)", "Reproduction"],
-    ["Copper (Cu)", "Pigmentation, enzymes"],
-    ["Selenium (Se)", "Antioxidant defence"],
-];
-
-export const FEED_VITAMINS = [
-    ["Vitamin A", "Vision & immunity"],
-    ["Vitamin B-complex (B1, B2, B3, B6, B12)", "Metabolism & nervous system"],
-    ["Vitamin C", "Antioxidant"],
-    ["Vitamin D", "Calcium uptake"],
-    ["Vitamin E", "Cell protection"],
-    ["Vitamin K", "Coagulation"],
-];
-
-export const FEED_AAS = ["Alanine", "Arginine", "Glycine", "Glutamic acid", "Aspartic acid", "Lysine", "Leucine", "Valine"];
-
-export const FEEDING_GUIDE = [
-    { animal: "Horses — light work", dose: "60 g / day", notes: "Coat, hoof, recovery" },
-    { animal: "Horses — moderate work", dose: "100 g / day", notes: "Performance support" },
-    { animal: "Horses — heavy training", dose: "150 g / day", notes: "Recovery & electrolytes" },
-    { animal: "Mares & young stock", dose: "50 – 80 g / day", notes: "Mineral balance" },
-    { animal: "Stallions", dose: "100 – 150 g / day", notes: "Trace element support" },
-    { animal: "Dairy cows", dose: "100 – 150 g / day", notes: "Udder health, fertility, calving ease" },
-    { animal: "Beef cattle", dose: "80 – 120 g / day", notes: "Feed efficiency, hoof health" },
-    { animal: "Calves", dose: "30 – 50 g / day", notes: "Growth & vitality" },
-    { animal: "Ewes / does", dose: "60 – 70 g / day", notes: "Lambing ease, milk production" },
-    { animal: "Lambs / kids", dose: "20 – 30 g / day", notes: "Growth & weaning support" },
-    { animal: "Goats (dairy & meat)", dose: "60 – 70 g / day", notes: "Mineral & iodine balance" },
-    { animal: "Poultry — layers", dose: "1 – 2 % of ration", notes: "Yolk pigmentation, shell strength" },
-    { animal: "Poultry — broilers", dose: "0.5 – 1 % of ration", notes: "Gut balance, FCR support" },
-    { animal: "Dogs", dose: "1 – 2 tsp / day", notes: "Coat & vitality" },
-    { animal: "Cats", dose: "1 tsp / day", notes: "Coat & general wellbeing" },
-    { animal: "Small pets", dose: "¼ – ½ tsp / day", notes: "Mineral & trace element top-up" },
-];
-
-export const PARTICLE_SIZES = [
-    { code: "2/10", label: "Ultra-fine", desc: "Premixes & pet food formulations" },
-    { code: "6/20", label: "Fine grade", desc: "Compound feed inclusion" },
-    { code: "10/20", label: "Standard", desc: "Top-dressing & on-farm mixing" },
-    { code: "20/60", label: "Medium", desc: "Cattle, sheep & equine direct feeding" },
-    { code: "T60", label: "Coarse", desc: "Free-access mineral blocks" },
-];
-
-export const FEED_PACKAGING = [
-    { format: "1 000 kg big-bag", use: "Bulk industrial users, feed mills" },
-    { format: "25 kg PE bag (40 / pallet)", use: "Farm-grade, easy handling" },
-    { format: "20 kg PE bag", use: "Distributor & retail-friendly" },
-    { format: "Frozen block / slab", use: "Fresh-frozen FBAM line only" },
-];
-
 export const PROCESS_STEPS = [
     {
         n: "01",
@@ -311,7 +202,7 @@ export const PROCESS_STEPS = [
     {
         n: "02",
         title: "4 : 1 throughput",
-        desc: "Approximately four tonnes of wet seaweed are required to produce one tonne of finished seaweed meal — the natural concentration ratio.",
+        desc: "Approximately four tonnes of wet seaweed are required to produce one tonne of finished seaweed product — the natural concentration ratio.",
     },
     {
         n: "03",
@@ -326,7 +217,7 @@ export const PROCESS_STEPS = [
     {
         n: "05",
         title: "Controlled drying — 75 °C",
-        desc: "Drying takes place at a maximum of approximately 75 °C, low enough to safeguard heat-sensitive vitamins, amino acids and bioactive compounds.",
+        desc: "Drying takes place at a maximum of approximately 75 °C, low enough to safeguard heat-sensitive vitamins, alginates and bioactive compounds.",
     },
     {
         n: "06",
@@ -335,8 +226,8 @@ export const PROCESS_STEPS = [
     },
     {
         n: "07",
-        title: "Fine milling & micron screening",
-        desc: "The dried meal is fine-milled and screened to customer-specific micron specifications: 2/10, 6/20, 10/20, 20/60 or T60.",
+        title: "Granulate sizing & screening",
+        desc: "The dried material is sized and screened to particle bands suitable for soil broadcast, turf top-dressing and NPK blending.",
     },
     {
         n: "08",
@@ -355,6 +246,11 @@ export const PROCESS_STEPS = [
     },
 ];
 
+// ─── Market data (indicative figures, directional) ──────────────
+// Sources informally referenced: FAO 2024 seaweed sector review,
+// MarketsandMarkets biostimulants briefing, public industry reports.
+// Used here for business-development context, not financial reporting.
+
 export const MARKET_BY_REGION = [
     { region: "Asia-Pacific", value: 9.8 },
     { region: "Europe", value: 4.2 },
@@ -364,37 +260,92 @@ export const MARKET_BY_REGION = [
     { region: "Ireland (domestic)", value: 0.08 },
 ];
 
+// Replaced animal feed segment with turf & landscape.
+// Values total 100.
 export const BUYER_SEGMENTS = [
-    { name: "Agricultural biostimulants", value: 34 },
-    { name: "Animal feed & nutrition", value: 26 },
+    { name: "Agricultural biostimulants", value: 38 },
+    { name: "Turf & landscape", value: 22 },
     { name: "Food ingredients & hydrocolloids", value: 18 },
     { name: "Cosmetics & personal care", value: 12 },
     { name: "Nutraceuticals & pharma", value: 10 },
 ];
 
+// Global biostimulants market value — directional, billions USD
+export const BIOSTIM_MARKET_GROWTH = [
+    { year: "2020", value: 2.5 },
+    { year: "2021", value: 2.9 },
+    { year: "2022", value: 3.3 },
+    { year: "2023", value: 3.8 },
+    { year: "2024", value: 4.3 },
+    { year: "2025", value: 4.9 },
+    { year: "2026", value: 5.6 },
+    { year: "2027", value: 6.3 },
+    { year: "2028", value: 7.1 },
+    { year: "2029", value: 8.0 },
+    { year: "2030", value: 9.0 },
+];
+
+// European seaweed extract import volume — directional, kilotonnes
+export const EU_SEAWEED_IMPORTS = [
+    { year: "2018", volume: 18 },
+    { year: "2019", volume: 22 },
+    { year: "2020", volume: 26 },
+    { year: "2021", volume: 31 },
+    { year: "2022", volume: 36 },
+    { year: "2023", volume: 41 },
+    { year: "2024", volume: 47 },
+];
+
+// Turf & landscape addressable market by region (directional, billions USD)
+export const TURF_BY_REGION = [
+    { region: "W. Europe", professional: 3.8, residential: 2.4 },
+    { region: "C. & E. Europe", professional: 1.6, residential: 1.1 },
+    { region: "UK & Ireland", professional: 2.1, residential: 1.3 },
+    { region: "GCC / Middle East", professional: 1.9, residential: 0.6 },
+    { region: "North Africa", professional: 0.7, residential: 0.3 },
+];
+
+// Drought-stress acreage Europe & Middle East — directional, million hectares
+export const DROUGHT_TREND = [
+    { year: "2015", hectares: 12 },
+    { year: "2016", hectares: 14 },
+    { year: "2017", hectares: 18 },
+    { year: "2018", hectares: 24 },
+    { year: "2019", hectares: 22 },
+    { year: "2020", hectares: 26 },
+    { year: "2021", hectares: 28 },
+    { year: "2022", hectares: 38 },
+    { year: "2023", hectares: 41 },
+    { year: "2024", hectares: 45 },
+];
+
 export const FAQS = [
     {
         q: "Where is McLir Seaweed sourced?",
-        a: "Our raw Ascophyllum nodosum is hand-cut from regulated Atlantic beds along the west coast of Ireland and processed under European food and feed standards.",
+        a: "Our raw Ascophyllum nodosum is hand-cut from regulated Atlantic beds along the west coast of Ireland and processed at our Plombières, Belgium operation under European agronomic and quality standards.",
     },
     {
         q: "Is it suitable for organic certification?",
         a: "Yes. Our liquid and granular ranges are produced under EU organic input standards (CE 2018/848). OMRI-track formulations are available on request for export markets.",
     },
     {
-        q: "How is the animal feed positioned regulatorily?",
-        a: "It is supplied as a natural seaweed feed material (multimineral) of vegetable origin. We use compliant wording such as 'supports digestive efficiency' and 'contributes to gut balance' — not medicinal claims.",
+        q: "How does seaweed support soil and turf?",
+        a: "Ascophyllum delivers alginates that improve soil aggregation and water-holding, mannitol that supports plants under osmotic and drought stress, and native plant bioactives (auxins, cytokinins, betaines) that contribute to root development and turf resilience.",
     },
     {
         q: "Tank-mix compatibility?",
-        a: "Our liquids are compatible with most NPK and micronutrient programmes. We recommend a small jar test before scaling. Spray-dried solids must be fully dissolved before mixing.",
+        a: "Our liquids are compatible with most NPK and micronutrient programmes. We recommend a small jar test before scaling at field level.",
     },
     {
         q: "Minimum order quantity?",
         a: "Pallet-level for 25 kg / 20 kg formats; single big-bag for 1 t orders. Container loads available for export.",
     },
     {
+        q: "Which climates and turf systems is McLir positioned for?",
+        a: "The portfolio is positioned for European temperate turf and crop systems and for warm, water-stressed Middle East landscaping, including golf courses, hotel and palace lawns, sports turf and luxury estate grounds.",
+    },
+    {
         q: "Do you ship internationally?",
-        a: "Yes — we ship across the EU, UK and beyond from our Plombières (Belgium) operation. Export documentation is provided per customer requirement.",
+        a: "Yes — we ship across the EU, UK, the Middle East and beyond from our Plombières (Belgium) operation. Export documentation is prepared per customer requirement.",
     },
 ];

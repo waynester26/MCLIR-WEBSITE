@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail } from "lucide-react";
+import { Mail, Anchor, Droplets, Hammer, Thermometer, ShieldCheck, Layers, FileText, Boxes, Package, MapPin } from "lucide-react";
 import { PROCESS_STEPS, BRAND } from "@/data/content";
 import { useT } from "@/i18n/i18n";
+
+const STEP_ICONS = [Anchor, Droplets, Droplets, Hammer, Thermometer, ShieldCheck, Layers, FileText, Package, Boxes, MapPin];
 
 export default function ManufacturingProcess() {
     const t = useT();
@@ -18,16 +20,14 @@ export default function ManufacturingProcess() {
                             {t("page.process.title")}
                         </h1>
                         <p className="mt-5 text-slate-400 text-lg leading-relaxed max-w-2xl">
-                            Every batch follows the same documented chain. Drying never exceeds 75 °C. Final moisture is
-                            held at 12 – 14 %. Every shipment is batch-numbered against the original delivery, so any
-                            finished bag can be walked all the way back to the Atlantic harvest it came from.
+                            {t("page.process.intro")}
                         </p>
                     </div>
                     <div className="lg:col-span-5 grid grid-cols-3 gap-3 text-center">
                         {[
-                            { v: "4 : 1", k: "Wet to finished meal ratio" },
-                            { v: "75 °C", k: "Maximum drying temperature" },
-                            { v: "12 – 14 %", k: "Final moisture window" },
+                            { v: "4 : 1", k: t("process.stat.ratio") },
+                            { v: "75 °C", k: t("process.stat.temp") },
+                            { v: "12 – 14 %", k: t("process.stat.moisture") },
                         ].map((s) => (
                             <div key={s.k} className="rounded-xl border border-white/10 bg-[#0A1628]/60 p-4" data-testid={`process-stat-${s.v}`}>
                                 <div className="font-serif text-2xl text-kelp-400">{s.v}</div>
@@ -39,23 +39,59 @@ export default function ManufacturingProcess() {
                     </div>
                 </div>
 
-                {/* Timeline */}
+                {/* Timeline — alternating left/right with central vertical line */}
                 <div className="relative mt-20" data-testid="process-timeline">
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-kelp-500/40 to-transparent hidden md:block" />
-                    <div className="space-y-12">
+                    {/* central vertical line (desktop only) */}
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-kelp-500/40 to-transparent" />
+
+                    <div className="space-y-10 md:space-y-14">
                         {PROCESS_STEPS.map((step, i) => {
                             const left = i % 2 === 0;
+                            const Icon = STEP_ICONS[i] || Layers;
                             return (
-                                <div key={step.n} className="grid md:grid-cols-2 md:gap-12 relative" data-testid={`process-step-${step.n}`}>
-                                    <div className={`md:col-start-${left ? 1 : 2} ${left ? "md:text-right md:pr-12" : "md:pl-12"}`}>
-                                        <div className="rounded-2xl border border-white/10 bg-[#0A1628]/60 p-6 lift-card inline-block max-w-md w-full text-left">
-                                            <div className="font-mono text-xs text-kelp-400">STEP {step.n}</div>
-                                            <h3 className="font-serif text-2xl mt-2 leading-snug">{step.title}</h3>
-                                            <p className="mt-3 text-slate-400 text-sm leading-relaxed">{step.desc}</p>
-                                        </div>
-                                    </div>
-                                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-7">
-                                        <span className="tl-node h-3.5 w-3.5 rounded-full bg-kelp-500" />
+                                <div
+                                    key={step.n}
+                                    className="md:grid md:grid-cols-2 md:gap-12 relative"
+                                    data-testid={`process-step-${step.n}`}
+                                >
+                                    {/* Card — placed in col 1 (left) or col 2 (right) via explicit Tailwind classes */}
+                                    {left ? (
+                                        <>
+                                            <div className="md:pr-10 md:text-right">
+                                                <div className="rounded-2xl border border-white/10 bg-[#0A1628]/70 p-6 lift-card text-left md:ml-auto max-w-md w-full">
+                                                    <div className="flex items-center gap-3 md:flex-row-reverse">
+                                                        <div className="font-mono text-xs text-kelp-400">STEP {step.n}</div>
+                                                        <div className="h-8 w-8 rounded-lg bg-kelp-600/15 border border-kelp-500/30 flex items-center justify-center">
+                                                            <Icon className="h-4 w-4 text-kelp-400" />
+                                                        </div>
+                                                    </div>
+                                                    <h3 className="font-serif text-2xl mt-3 leading-snug">{step.title}</h3>
+                                                    <p className="mt-3 text-slate-400 text-sm leading-relaxed">{step.desc}</p>
+                                                </div>
+                                            </div>
+                                            <div className="hidden md:block" />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="hidden md:block" />
+                                            <div className="md:pl-10">
+                                                <div className="rounded-2xl border border-white/10 bg-[#0A1628]/70 p-6 lift-card max-w-md w-full">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="h-8 w-8 rounded-lg bg-kelp-600/15 border border-kelp-500/30 flex items-center justify-center">
+                                                            <Icon className="h-4 w-4 text-kelp-400" />
+                                                        </div>
+                                                        <div className="font-mono text-xs text-kelp-400">STEP {step.n}</div>
+                                                    </div>
+                                                    <h3 className="font-serif text-2xl mt-3 leading-snug">{step.title}</h3>
+                                                    <p className="mt-3 text-slate-400 text-sm leading-relaxed">{step.desc}</p>
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {/* central node */}
+                                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-7 z-10">
+                                        <span className="h-3.5 w-3.5 rounded-full bg-kelp-500 ring-4 ring-kelp-500/15 shadow-[0_0_18px_rgba(46,92,66,0.65)]" />
                                     </div>
                                 </div>
                             );
@@ -65,13 +101,12 @@ export default function ManufacturingProcess() {
 
                 {/* CTA */}
                 <div className="mt-24 rounded-3xl border border-white/10 bg-gradient-to-r from-kelp-700/30 to-ink-700/30 p-10 text-center" data-testid="process-cta">
-                    <div className="eyebrow">Quality &amp; traceability assured</div>
+                    <div className="eyebrow">{t("process.cta.eyebrow")}</div>
                     <div className="font-serif text-3xl sm:text-5xl mt-3 leading-tight">
-                        Want to audit a batch? Send us a delivery number.
+                        {t("process.cta.title")}
                     </div>
                     <p className="mt-4 text-slate-300 max-w-2xl mx-auto">
-                        We can walk any finished pallet back to the original harvest, with documentation suitable for
-                        feed-mill QA, organic-certifier audits and export inspection.
+                        {t("process.cta.body")}
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a

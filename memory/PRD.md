@@ -1,7 +1,7 @@
 # McLir Seaweed — Product Requirements Doc
 
 ## Original problem statement
-Rebuild the prototype at https://seaweed-bio-products.preview.emergentagent.com/ into V2 for **McLir Seaweed**, a premium Atlantic *Ascophyllum nodosum* bio-products company. Keep the prototype's section flow (hero → product families → process → testimonials → FAQ → contact) but expand depth: more chapters, drill-downs, deeper technical content, full animal-feed chapter, manufacturing process, market insights with charts. Rebrand fully to McLir Seaweed (logo, name, contact = McLir@Sea-Weed.DE, location = Plombières, Belgium). Use the McLir Animal Feed Range brochure as content authority. Granulates should feel natural/earthy; liquid bottles should feel premium glass.
+Rebuild the prototype at https://seaweed-turf-premium.preview.emergentagent.com/ into V2 for **McLir Seaweed**, a premium Atlantic *Ascophyllum nodosum* bio-products company. Keep the prototype's section flow (hero → product families → process → testimonials → FAQ → contact) but expand depth: more chapters, drill-downs, deeper technical content, full animal-feed chapter, manufacturing process, market insights with charts. Rebrand fully to McLir Seaweed (logo, name, contact = McLir@Sea-Weed.DE, location = Plombières, Belgium). Use the McLir Animal Feed Range brochure as content authority. Granulates should feel natural/earthy; liquid bottles should feel premium glass.
 
 ## Architecture
 - **Frontend only** (React 19 + Tailwind + shadcn/ui + lucide-react + Recharts)

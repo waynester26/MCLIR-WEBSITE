@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import LiquidProducts from "@/pages/LiquidProducts";
 import Granulates from "@/pages/Granulates";
+import LawnsAndTurf from "@/pages/LawnsAndTurf";
 import ManufacturingProcess from "@/pages/ManufacturingProcess";
 import MarketInsights from "@/pages/MarketInsights";
 import Contact from "@/pages/Contact";
@@ -19,6 +20,7 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/liquid" element={<LiquidProducts />} />
                             <Route path="/granulates" element={<Granulates />} />
+                            <Route path="/lawns-and-turf" element={<LawnsAndTurf />} />
                             <Route path="/manufacturing" element={<ManufacturingProcess />} />
                             <Route path="/market-insights" element={<MarketInsights />} />
                             <Route path="/contact" element={<Contact />} />

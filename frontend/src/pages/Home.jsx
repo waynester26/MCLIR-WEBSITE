@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Droplets, Sprout, BarChart3, Mail, Leaf, ShieldCheck, Globe2 } from "lucide-react";
-import { BRAND, HERO_IMG, FAQS } from "@/data/content";
+import { ArrowRight, Droplets, Sprout, BarChart3, Mail, Leaf, ShieldCheck, Globe2, Flag } from "lucide-react";
+import { BRAND, HERO_IMG, FAQS, BUYER_SEGMENTS } from "@/data/content";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useT } from "@/i18n/i18n";
 
@@ -31,23 +31,40 @@ const useStats = () => {
     ];
 };
 
+const useMarquee = () => {
+    const t = useT();
+    return [
+        t("chip.vineyards"),
+        t("chip.orchards"),
+        t("chip.cereals"),
+        t("chip.greenhouse"),
+        t("chip.turf_golf"),
+        t("chip.berries"),
+        t("chip.lawns"),
+        t("chip.estates"),
+        t("chip.hotels"),
+        t("chip.sports_turf"),
+    ];
+};
+
 export default function Home() {
     const t = useT();
     const FAMILIES = useFamilies();
     const PILLARS = usePillars();
     const STATS = useStats();
+    const MARQUEE = useMarquee();
     return (
         <div data-testid="home-page">
             {/* HERO */}
             <section className="relative min-h-[88vh] flex items-end overflow-hidden" data-testid="hero-section">
                 <div className="absolute inset-0">
-                    <img src={HERO_IMG} alt="" className="h-full w-full object-cover" />
+                    <img src={HERO_IMG} alt="Atlantic Ascophyllum nodosum seaweed" className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/70 via-[#050B14]/55 to-[#050B14]" />
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(46,92,66,0.18),transparent_60%)]" />
                 </div>
                 <div className="relative max-w-7xl mx-auto px-5 lg:px-8 pb-20 pt-32 w-full">
-                    <div className="grid lg:grid-cols-2 gap-8 items-start">
-                        <div className="max-w-3xl">
+                    <div className="grid lg:grid-cols-12 gap-8 items-center">
+                        <div className="lg:col-span-7 max-w-3xl">
                             <div className="eyebrow rise" data-testid="hero-eyebrow">
                                 {t("hero.eyebrow")}
                             </div>
@@ -56,11 +73,11 @@ export default function Home() {
                                 data-testid="hero-title"
                             >
                                 {t("hero.title.line1")}<br />
-                                <span className="text-kelp-400 italic">{t("hero.title.italic")}</span> {t("hero.title.line2_en")}
+                                <span className="text-kelp-400 italic">{t("hero.title.italic")}</span> {t("hero.title.line2")}
                             </h1>
-                        <p className="rise-d2 mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed" data-testid="hero-sub">
-                            {t("hero.sub")}
-                        </p>
+                            <p className="rise-d2 mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed" data-testid="hero-sub">
+                                {t("hero.sub")}
+                            </p>
                             <div className="rise-d3 mt-8 flex flex-wrap gap-3" data-testid="hero-cta-row">
                                 <Link
                                     to="/liquid"
@@ -68,6 +85,13 @@ export default function Home() {
                                     data-testid="hero-cta-explore-liquid"
                                 >
                                     {t("cta.explore_liquid")} <ArrowRight className="h-4 w-4" />
+                                </Link>
+                                <Link
+                                    to="/lawns-and-turf"
+                                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/15 bg-white/[0.04] hover:bg-white/[0.08] text-slate-100 hover:text-white text-sm font-medium transition-colors"
+                                    data-testid="hero-cta-lawns"
+                                >
+                                    {t("cta.discover_turf")} <ArrowRight className="h-4 w-4" />
                                 </Link>
                                 <a
                                     href={`mailto:${BRAND.email}`}
@@ -78,8 +102,42 @@ export default function Home() {
                                 </a>
                             </div>
                         </div>
-                        <div className="hidden lg:flex items-center justify-end" data-testid="hero-logo">
-                            <img src={BRAND.logo} alt="McLir Seaweed" className="h-72 w-72 rounded-2xl object-contain" />
+
+                        {/* Premium logo medallion */}
+                        <div className="hidden lg:flex items-center justify-end lg:col-span-5" data-testid="hero-logo">
+                            <div className="relative">
+                                {/* Outer kelp glow */}
+                                <div className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(60,122,88,0.25),transparent_65%)] blur-2xl" />
+                                {/* Soft ambient ring */}
+                                <div className="absolute -inset-2 rounded-full bg-gradient-to-br from-kelp-500/40 via-transparent to-premium-400/15 blur-xl opacity-70" />
+
+                                <div className="relative h-[22rem] w-[22rem] rounded-full bg-gradient-to-br from-[#0C1B2C] via-[#081320] to-[#040A12] border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9),0_0_60px_-15px_rgba(60,122,88,0.5)] flex items-center justify-center backdrop-blur-xl">
+                                    {/* Inner ring */}
+                                    <div className="absolute inset-3 rounded-full border border-white/5" />
+                                    <div className="absolute inset-6 rounded-full border border-kelp-500/15" />
+
+                                    {/* Glass medallion */}
+                                    <div className="relative h-64 w-64 rounded-full bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 flex items-center justify-center overflow-hidden">
+                                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(90,154,120,0.18),transparent_55%)]" />
+                                        <img
+                                            src={BRAND.logo}
+                                            alt="McLir Seaweed crest"
+                                            className="relative h-44 w-44 object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+                                        />
+                                    </div>
+
+                                    {/* Bottom shine */}
+                                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-32 rounded-full bg-gradient-to-r from-transparent via-kelp-500/60 to-transparent blur-[1px]" />
+                                </div>
+
+                                {/* Caption */}
+                                <div className="mt-6 text-center" data-testid="hero-medallion-caption">
+                                    <div className="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.28em] uppercase text-slate-300">
+                                        <Flag className="h-3 w-3 text-kelp-400" />
+                                        {t("hero.medallion_caption")}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -88,16 +146,12 @@ export default function Home() {
                         <div className="marquee-track flex gap-10 font-mono text-xs uppercase tracking-[0.28em] text-slate-400 whitespace-nowrap">
                             {Array.from({ length: 2 }).map((_, k) => (
                                 <span key={k} className="flex gap-10">
-                                    <span>Vineyards</span><span>·</span>
-                                    <span>Orchards</span><span>·</span>
-                                    <span>Cereals</span><span>·</span>
-                                    <span>Dairy</span><span>·</span>
-                                    <span>Sheep & Goats</span><span>·</span>
-                                    <span>Equine</span><span>·</span>
-                                    <span>Greenhouse</span><span>·</span>
-                                    <span>Turf & Golf</span><span>·</span>
-                                    <span>Berries</span><span>·</span>
-                                    <span>Pet nutrition</span><span>·</span>
+                                    {MARQUEE.map((m, i) => (
+                                        <span key={`${k}-${i}`} className="flex gap-10">
+                                            <span>{m}</span>
+                                            <span>·</span>
+                                        </span>
+                                    ))}
                                 </span>
                             ))}
                         </div>
@@ -189,8 +243,6 @@ export default function Home() {
             </section>
 
             {/* PROCESS TEASER */}
-
-            {/* PROCESS TEASER */}
             <section className="py-24 sm:py-32" data-testid="process-teaser-section">
                 <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12">
                     <div className="md:col-span-5">
@@ -213,7 +265,7 @@ export default function Home() {
                         {[
                             { k: "01", t: "Atlantic harvest", d: "Hand-cut, regulated beds" },
                             { k: "05", t: "Controlled drying", d: "≤ 75 °C, vitamin-safe" },
-                            { k: "07", t: "Micron screening", d: "2/10 to T60" },
+                            { k: "07", t: "Granulate sizing", d: "Soil, turf and blend grades" },
                             { k: "09", t: "Final bagging", d: "1 t · 25 kg · 20 kg" },
                         ].map((s) => (
                             <div
@@ -251,20 +303,14 @@ export default function Home() {
                     </div>
                     <div className="md:col-span-5 rounded-2xl border border-white/10 p-6 bg-[#0A1628]/60">
                         <div className="eyebrow mb-3">{t("market.segments_label")}</div>
-                        {[
-                            ["Agricultural biostimulants", 34],
-                            ["Animal feed & nutrition", 26],
-                            ["Food ingredients", 18],
-                            ["Cosmetics", 12],
-                            ["Nutraceuticals", 10],
-                        ].map(([n, v]) => (
-                            <div key={n} className="mt-3" data-testid={`segment-bar-${n}`}>
+                        {BUYER_SEGMENTS.map((seg) => (
+                            <div key={seg.name} className="mt-3" data-testid={`segment-bar-${seg.name}`}>
                                 <div className="flex justify-between text-xs font-mono text-slate-400">
-                                    <span>{n}</span>
-                                    <span>{v}%</span>
+                                    <span>{seg.name}</span>
+                                    <span>{seg.value} %</span>
                                 </div>
                                 <div className="h-1.5 bg-white/5 rounded-full mt-1 overflow-hidden">
-                                    <div className="h-full bg-kelp-500" style={{ width: `${v * 2.5}%` }} />
+                                    <div className="h-full bg-kelp-500" style={{ width: `${seg.value * 2.5}%` }} />
                                 </div>
                             </div>
                         ))}
