@@ -35,7 +35,7 @@ function ProductPanel({ p, t }) {
                         <div className="mx-auto max-w-sm rounded-2xl overflow-hidden border border-kelp-500/25 shadow-[0_30px_80px_-25px_rgba(0,0,0,0.85),0_0_60px_-25px_rgba(60,122,88,0.6)]">
                             <img
                                 src={p.image}
-                                alt={`${p.title} — official McLir label`}
+                                alt={`${p.title} — liquid seaweed fertiliser concentrate derived from North Atlantic Ascophyllum nodosum`}
                                 className="w-full h-auto block"
                                 loading="eager"
                                 data-testid={`liquid-image-${p.slug}`}
