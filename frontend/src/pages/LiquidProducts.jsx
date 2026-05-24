@@ -20,12 +20,12 @@ import { useT } from "@/i18n/i18n";
 const PRODUCT_PHOTOS = {
     "cold-press-10": {
         productImg: "/cold press 10.png",
-        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg?w=3840&q=95",
+        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg",
         seaweedAlt: "Ascophyllum nodosum seaweed on the Atlantic coast — source of McLir Cold Press 10",
     },
     "cold-press-15": {
         productImg: "/cold press 15.png",
-        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg?w=3840&q=95",
+        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg",
         seaweedAlt: "Ascophyllum nodosum rockweed on Atlantic coast — source of McLir Cold Press 15",
     },
 };
@@ -40,47 +40,42 @@ function ProductPanel({ p, t }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
 
-            {/* ── Left panel: 2 stacked photos, no animation ── */}
+            {/* ── Left panel: Granulates-style premium card ── */}
             <div className="lg:col-span-5">
-                <div className="liquid-vessel rounded-3xl overflow-hidden h-full flex flex-col" style={{ minHeight: "580px" }}>
+                <div className="rounded-3xl bg-gradient-to-br from-[#0B1E14] to-[#050B14] border border-kelp-500/20 overflow-hidden h-full relative shadow-[0_30px_70px_-25px_rgba(0,0,0,0.9)]">
 
-                    {/* Top photo — full bottle visible, object-contain on dark bg */}
-                    <div
-                        className="relative overflow-hidden bg-[#050B14]"
-                        style={{ flex: "2 1 60%" }}
-                    >
+                    {/* Top — product bottle, fills card cleanly */}
+                    <div className="relative">
                         <img
                             src={photos.productImg}
                             alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
-                            className="absolute inset-0 w-full h-full object-contain"
+                            className="w-full aspect-[4/5] object-cover"
                             loading="eager"
                             data-testid={`liquid-image-${p.slug}`}
                         />
-                        {/* Premium inset ring */}
-                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 pointer-events-none" />
-                        {/* Concentration badge */}
-                        <div className="absolute top-4 left-4 bg-black/55 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-mono text-kelp-300 border border-kelp-500/40 shadow-lg">
-                            {p.line}
-                        </div>
+                        {/* Gradient blending bottle into seaweed section */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/20 to-transparent pointer-events-none" />
                     </div>
 
-                    {/* Bottom photo — seaweed, 8K quality, clean no overlays */}
-                    <div
-                        className="relative overflow-hidden"
-                        style={{ flex: "1 1 40%" }}
-                    >
+                    {/* Bottom — seaweed photo, wide cinematic, no cropping */}
+                    <div className="relative">
                         <img
                             src={photos.seaweedImg}
                             alt={photos.seaweedAlt}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="w-full aspect-[16/7] object-cover"
                             loading="lazy"
                         />
-                        {/* Caption at bottom */}
-                        <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/65 to-transparent pointer-events-none">
-                            <p className="text-[11px] font-mono text-kelp-300 tracking-widest uppercase">
-                                100% Ascophyllum nodosum · North Atlantic
-                            </p>
-                            <p className="text-xs text-slate-300 italic mt-1">"{p.tagline}"</p>
+                        {/* Subtle bottom gradient for badge readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#050B14]/80 to-transparent pointer-events-none" />
+                    </div>
+
+                    {/* Floating info badge — identical pattern to Granulates */}
+                    <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/70 border border-kelp-500/25 text-center backdrop-blur-md">
+                        <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-kelp-300">
+                            {p.line}
+                        </div>
+                        <div className="font-serif text-base italic text-white mt-0.5">
+                            "{p.tagline}"
                         </div>
                     </div>
 
