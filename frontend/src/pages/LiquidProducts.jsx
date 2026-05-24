@@ -16,42 +16,98 @@ import {
 import { LIQUID_PRODUCTS, BRAND, IMG } from "@/data/content";
 import { useT } from "@/i18n/i18n";
 
+/* ── Ken Burns keyframes ── */
+const kenBurnsStyles = `
+  @keyframes kenBurnsRight {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    100% { transform: scale(1.08) translate(1.5%, 0.8%); }
+  }
+  @keyframes kenBurnsLeft {
+    0%   { transform: scale(1.0) translate(0%, 0%); }
+    100% { transform: scale(1.08) translate(-1.5%, 0.8%); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .kb-right {
+      animation: kenBurnsRight 10s ease-in-out infinite alternate;
+    }
+    .kb-left {
+      animation: kenBurnsLeft 10s ease-in-out infinite alternate;
+    }
+  }
+`;
+
+/* ── Per-product photo config ── */
+const PRODUCT_PHOTOS = {
+    "cold-press-10": {
+        productImg: "/cold-press-10.jpg",
+        seaweedImg: "https://asc-aqua.org/wp-content/uploads/2023/10/AdobeStock_268863676-1570x1047.jpeg",
+        seaweedAlt: "Ascophyllum nodosum seaweed on the Atlantic coast — source of McLir Cold Press 10",
+    },
+    "cold-press-15": {
+        productImg: "/cold-press-15.jpg",
+        seaweedImg: "https://temperatereefs.org/wp-content/uploads/2019/08/unnamed-4-1024x768.jpg",
+        seaweedAlt: "Ascophyllum nodosum rockweed on Atlantic coast — source of McLir Cold Press 15",
+    },
+};
+
 function ProductPanel({ p, t }) {
+    const photos = PRODUCT_PHOTOS[p.slug] || {
+        productImg: p.image,
+        seaweedImg: IMG.seaweedKelpForest,
+        seaweedAlt: "Atlantic seaweed — source of McLir liquid fertiliser",
+    };
+
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
-            {/* Visual — premium label artwork on dark seaweed background */}
-            <div className="lg:col-span-5">
-                <div className="liquid-vessel rounded-3xl p-6 sm:p-8 h-full flex items-center justify-center relative overflow-hidden">
-                    <img
-                        src="https://images.pexels.com/photos/12829684/pexels-photo-12829684.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1200"
-                        alt="Fresh Atlantic seaweed kelp underwater"
-                        className="absolute inset-0 w-full h-full object-cover opacity-80"
-                        loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/20 via-[#050B14]/30 to-[#050B14]/50" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(46,92,66,0.32),transparent_60%)]" />
 
-                    <div className="relative z-10 w-full">
-                        <div className="mx-auto max-w-sm rounded-2xl overflow-hidden border border-kelp-500/25 shadow-[0_30px_80px_-25px_rgba(0,0,0,0.85),0_0_60px_-25px_rgba(60,122,88,0.6)]">
-                            <img
-                                src={p.image}
-                                alt={`${p.title} — liquid seaweed fertiliser concentrate derived from North Atlantic Ascophyllum nodosum`}
-                                className="w-full h-auto block"
-                                loading="eager"
-                                data-testid={`liquid-image-${p.slug}`}
-                            />
-                        </div>
-                        <div className="mt-6 text-center">
-                            <div className="eyebrow text-slate-200">
-                                100 % Ascophyllum nodosum · {t("hero.medallion_caption")}
-                            </div>
-                            <div className="mt-2 font-serif text-base italic text-kelp-300">"{p.tagline}"</div>
+            {/* ── Left panel: 2 stacked animated photos ── */}
+            <div className="lg:col-span-5">
+                <div className="liquid-vessel rounded-3xl overflow-hidden h-full flex flex-col" style={{ minHeight: "580px" }}>
+
+                    {/* Top photo — product bottle */}
+                    <div className="relative overflow-hidden" style={{ flex: "1 1 50%" }}>
+                        <img
+                            src={photos.productImg}
+                            alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
+                            className="kb-right absolute inset-0 w-full h-full object-cover"
+                            loading="eager"
+                            data-testid={`liquid-image-${p.slug}`}
+                            style={{ transformOrigin: "center center" }}
+                        />
+                        {/* Subtle bottom fade to blend into second photo */}
+                        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-black/40 pointer-events-none" />
+                        {/* Premium inset ring */}
+                        <div className="absolute inset-0 ring-1 ring-inset ring-white/15 rounded-t-3xl pointer-events-none" />
+                        {/* Concentration badge */}
+                        <div className="absolute top-4 left-4 bg-black/55 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-mono text-kelp-300 border border-kelp-500/40 shadow-lg">
+                            {p.line}
                         </div>
                     </div>
+
+                    {/* Bottom photo — Ascophyllum nodosum Atlantic coast */}
+                    <div className="relative overflow-hidden" style={{ flex: "1 1 50%" }}>
+                        <img
+                            src={photos.seaweedImg}
+                            alt={photos.seaweedAlt}
+                            className="kb-left absolute inset-0 w-full h-full object-cover"
+                            loading="lazy"
+                            style={{ transformOrigin: "center center" }}
+                        />
+                        {/* Subtle top fade */}
+                        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+                        {/* Caption at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/65 to-transparent pointer-events-none">
+                            <p className="text-[11px] font-mono text-kelp-300 tracking-widest uppercase">
+                                100% Ascophyllum nodosum · North Atlantic
+                            </p>
+                            <p className="text-xs text-slate-300 italic mt-1">"{p.tagline}"</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            {/* Detail */}
+            {/* ── Right panel: product detail (unchanged) ── */}
             <div className="lg:col-span-7">
                 <div className="eyebrow">{p.line}</div>
                 <h3
@@ -246,6 +302,9 @@ export default function LiquidProducts() {
 
     return (
         <div className="pt-12 pb-32" data-testid="liquid-page">
+            {/* Inject Ken Burns keyframes once */}
+            <style>{kenBurnsStyles}</style>
+
             {/* Atmospheric backdrop */}
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0 -z-10">
@@ -318,11 +377,11 @@ export default function LiquidProducts() {
                     <Link
                         to="/lawns-and-turf"
                         className="lift-card rounded-2xl border border-white/10 bg-[#0A1628]/60 p-7"
-                        data-testid="liquid-next-lawns"
+                        data-testid="liquid-next-turf"
                     >
-                        <div className="eyebrow">{t("page.lawns.eyebrow")}</div>
-                        <div className="font-serif text-3xl mt-2">{t("page.lawns.title")}</div>
-                        <p className="text-slate-400 mt-3 text-sm">{t("lawns.programme.body")}</p>
+                        <div className="eyebrow">{t("cta.drill_in")}</div>
+                        <div className="font-serif text-3xl mt-2">{t("fam.turf.title")}</div>
+                        <p className="text-slate-400 mt-3 text-sm">{t("fam.turf.body")}</p>
                         <div className="mt-5 inline-flex items-center gap-2 text-kelp-400 text-sm">
                             {t("cta.open")} <ArrowRight className="h-4 w-4" />
                         </div>
