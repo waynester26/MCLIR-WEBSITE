@@ -21,8 +21,6 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/liquid" element={<LiquidProducts />} />
                             <Route path="/granulates" element={<Granulates />} />
-                            <Route path="/water-soluble-powder" element={<WaterSolublePowder />} />
-                            <Route path="/animal-feeding" element={<AnimalFeeding />} />
                             <Route path="/manufacturing" element={<ManufacturingProcess />} />
                             <Route path="/market-insights" element={<MarketInsights />} />
                             <Route path="/contact" element={<Contact />} />
