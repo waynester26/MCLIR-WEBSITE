@@ -28,26 +28,21 @@ function ProductPanel({ p, t }) {
     return (
         <div data-testid={`liquid-panel-${p.slug}`} className="grid lg:grid-cols-12 gap-10">
 
-            {/* ── Left panel: identical structure to Granulates ── */}
+            {/* ── Left panel: shrinks to fit content, no excess space ── */}
             <div className="lg:col-span-5">
-                <div className="rounded-3xl bg-gradient-to-br from-[#0B1E14] to-[#050B14] border border-kelp-500/20 overflow-hidden h-full relative shadow-[0_30px_70px_-25px_rgba(0,0,0,0.9)]">
+                <div className="rounded-3xl bg-gradient-to-br from-[#0B1E14] to-[#050B14] border border-kelp-500/20 overflow-hidden w-full">
 
-                    {/* Single product bottle image — full resolution, no darkening */}
+                    {/* Product bottle image — centred, no darkening */}
                     <img
                         src={productImg}
                         alt={`${p.title} — McLir liquid seaweed fertiliser, ${p.line}`}
-                        className="w-full aspect-[4/5] object-cover"
-                        width="3840"
-                        height="4800"
+                        className="w-full aspect-[3/4] object-cover object-center"
                         loading="eager"
                         data-testid={`liquid-image-${p.slug}`}
                     />
 
-                    {/* Bottom-only gradient — only covers lower 30%, top 70% stays fully clear */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050B14] via-[#050B14]/10 to-transparent pointer-events-none" />
-
-                    {/* Floating badge — identical to Granulates */}
-                    <div className="absolute bottom-6 left-6 right-6 px-4 py-3 rounded-lg bg-black/70 border border-kelp-500/25 text-center backdrop-blur-md">
+                    {/* Info badge — sits directly below the image, not absolutely positioned */}
+                    <div className="w-full px-4 py-3 bg-black/70 border-t border-kelp-500/25 text-center backdrop-blur-sm">
                         <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-kelp-300">
                             {p.line}
                         </div>
