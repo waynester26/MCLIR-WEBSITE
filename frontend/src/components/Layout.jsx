@@ -14,10 +14,8 @@ const useNav = () => {
             children: [
                 { to: "/liquid", label: t("nav.liquid") },
                 { to: "/granulates", label: t("nav.granulates") },
-                { to: "/water-soluble-powder", label: t("nav.wsp") },
             ],
         },
-        { to: "/animal-feeding", label: t("nav.feeding") },
         { to: "/manufacturing", label: t("nav.process") },
         { to: "/market-insights", label: t("nav.insights") },
         { to: "/contact", label: t("nav.contact") },

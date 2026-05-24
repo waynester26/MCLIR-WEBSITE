@@ -5,8 +5,6 @@ import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import LiquidProducts from "@/pages/LiquidProducts";
 import Granulates from "@/pages/Granulates";
-import WaterSolublePowder from "@/pages/WaterSolublePowder";
-import AnimalFeeding from "@/pages/AnimalFeeding";
 import ManufacturingProcess from "@/pages/ManufacturingProcess";
 import MarketInsights from "@/pages/MarketInsights";
 import Contact from "@/pages/Contact";

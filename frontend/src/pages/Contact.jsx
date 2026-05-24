@@ -13,8 +13,6 @@ const TILES = [
 const SUBJECTS = [
     "Liquid Seaweed sample",
     "Granulate sample",
-    "Water Soluble Powder sample",
-    "Animal feed enquiry",
     "Distribution / partnership",
 ];
 
