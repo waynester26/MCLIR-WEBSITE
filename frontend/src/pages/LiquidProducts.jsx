@@ -18,8 +18,8 @@ import { useT } from "@/i18n/i18n";
 
 /* ── Product image map — matching exact filenames in /public ── */
 const PRODUCT_IMG = {
-    "cold-press-10": "/cold press 10.png",
-    "cold-press-15": "/cold press 15.png",
+    "cold-press-10": "/cold-press-10.jpg",
+    "cold-press-15": "/cold-press-15.jpg",
 };
 
 function ProductPanel({ p, t }) {
