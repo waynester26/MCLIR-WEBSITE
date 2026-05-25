@@ -174,7 +174,7 @@ const T = {
 
     // ── Market teaser ───────────────────────────────────────
     "market.eyebrow": { en: "Market context", de: "Marktkontext", fr: "Contexte de marché" },
-    "market.title": { en: "Ireland is a small market. Europe and the Middle East are not.", de: "Irland ist ein kleiner Markt. Europa und der Nahe Osten nicht.", fr: "L'Irlande est un petit marché. L'Europe et le Moyen-Orient ne le sont pas." },
+    "market.title": { en: "Ireland is a small market. The world is not.", de: "Irland ist ein kleiner Markt. Die Welt nicht.", fr: "L'Irlande est un petit marché. Le monde ne l'est pas." },
     "market.body": {
         en: "Five buyer categories — agricultural biostimulants, turf and landscape, food ingredients, cosmetics and nutraceuticals — drive global seaweed demand. McLir is built around the two with the strongest agronomic fit: biostimulants and turf / landscape.",
         de: "Fünf Käufer-Kategorien — Biostimulanzien, Rasen & Landschaftsbau, Lebensmittelzutaten, Kosmetik und Nutrazeutika — treiben die globale Algen-Nachfrage. McLir konzentriert sich auf die zwei mit dem stärksten agronomischen Profil: Biostimulanzien und Rasen & Landschaftsbau.",
