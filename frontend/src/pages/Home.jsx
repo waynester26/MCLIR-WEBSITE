@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Droplets, Sprout, BarChart3, Mail, Leaf, ShieldCheck, Globe2, Flag } from "lucide-react";
-import { BRAND, HERO_IMG, FAQS, BUYER_SEGMENTS } from "@/data/content";
+import { BRAND, FAQS, BUYER_SEGMENTS } from "@/data/content";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useT } from "@/i18n/i18n";
 
@@ -58,7 +58,14 @@ export default function Home() {
             {/* HERO */}
             <section className="relative min-h-[88vh] flex items-end overflow-hidden" data-testid="hero-section">
                 <div className="absolute inset-0">
-                    <img src={HERO_IMG} alt="Atlantic Ascophyllum nodosum seaweed" className="h-full w-full object-cover" />
+                    <video
+                        src="/seaweed video.mp4"
+                        className="h-full w-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#050B14]/70 via-[#050B14]/55 to-[#050B14]" />
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(46,92,66,0.18),transparent_60%)]" />
                 </div>
