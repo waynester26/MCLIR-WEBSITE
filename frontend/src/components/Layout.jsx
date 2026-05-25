@@ -246,13 +246,13 @@ export default function Layout({ children }) {
                     </div>
                 </div>
                 <div className="border-t border-white/5">
-                    <div className="max-w-7xl mx-auto px-5 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-                        <div className="text-xs font-mono text-slate-500">
-                            © {new Date().getFullYear()} McLir Seaweed — Plombières, Belgium
-                        </div>
+                    <div className="max-w-7xl mx-auto px-5 lg:px-8 py-5 flex flex-col items-center justify-center gap-2 text-center">
                         <div className="text-xs font-mono text-slate-500">
                             {t("footer.signature")}
                         </div>
+                        <p className="text-xs text-slate-500">
+                            © {new Date().getFullYear()} McLir Seaweed. All rights reserved.
+                        </p>
                     </div>
                 </div>
             </footer>
