@@ -2,6 +2,7 @@ import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/i18n";
 import Layout from "@/components/Layout";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/Home";
 import LiquidProducts from "@/pages/LiquidProducts";
 import Granulates from "@/pages/Granulates";
@@ -16,6 +17,7 @@ function App() {
         <div className="App">
             <LanguageProvider>
                 <BrowserRouter>
+                    <ScrollToTop />
                     <Layout>
                         <Routes>
                             <Route path="/" element={<Home />} />
