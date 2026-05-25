@@ -190,7 +190,7 @@ export default function Home() {
                                 key={f.to}
                                 to={f.to}
                                 className={`lift-card group relative rounded-2xl border border-white/10 bg-gradient-to-br ${f.accent} p-8 sm:p-10 overflow-hidden`}
-                                data-testid={`family-card-${f.to.replace("/", "")}`}}`}
+                                data-testid={`family-card-${f.to.replace("/", "")}`}
                             >
                                 <div className="flex items-start justify-between gap-6">
                                     <div>
