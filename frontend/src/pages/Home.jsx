@@ -190,6 +190,195 @@ export default function Home() {
                                 key={f.to}
                                 to={f.to}
                                 className={`lift-card group relative rounded-2xl border border-white/10 bg-gradient-to-br ${f.accent} p-8 sm:p-10 overflow-hidden`}
-                                data-testid={`family-card-${f.to.replace("/", "")}`}
+                                data-testid={`family-card-${f.to.replace("/", "")}`}}`}
                             >
-                                <div className="flex items-start 
+                                <div className="flex items-start justify-between gap-6">
+                                    <div>
+                                        <div className="eyebrow">{f.eyebrow}</div>
+                                        <h3 className="font-serif text-3xl sm:text-4xl mt-2 text-white">{f.title}</h3>
+                                    </div>
+                                    <div className="rounded-xl border border-white/10 p-3 bg-white/5 group-hover:bg-kelp-600/20 transition-colors">
+                                        <f.icon className="h-6 w-6 text-kelp-400" />
+                                    </div>
+                                </div>
+                                <p className="mt-5 text-slate-300 leading-relaxed max-w-md">{f.copy}</p>
+                                <div className="mt-8 inline-flex items-center gap-2 text-sm text-kelp-400 font-medium">
+                                    {t("cta.drill_in")} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* STATS */}
+            <section className="border-y border-white/5 bg-[#040912]" data-testid="stats-section">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 py-16 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+                    {STATS.map((s, i) => (
+                        <div key={i} data-testid={`stat-${i}`}>
+                            <div className="font-serif text-5xl sm:text-6xl text-white leading-none">{s.v}</div>
+                            <div className="mt-3 text-xs font-mono uppercase tracking-[0.18em] text-slate-400 max-w-[14rem]">
+                                {s.k}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* PILLARS */}
+            <section className="py-24 sm:py-32" data-testid="pillars-section">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8">
+                    <div className="max-w-2xl mb-14">
+                        <div className="eyebrow">{t("pillars.eyebrow")}</div>
+                        <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
+                            {t("pillars.title")}
+                        </h2>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {PILLARS.map((p, i) => (
+                            <div
+                                key={i}
+                                className="rounded-2xl border border-white/10 bg-[#0A1628]/60 p-7 lift-card"
+                                data-testid={`pillar-${i}`}
+                            >
+                                <div className="rounded-lg w-11 h-11 flex items-center justify-center bg-kelp-600/15 border border-kelp-500/30">
+                                    <p.icon className="h-5 w-5 text-kelp-400" />
+                                </div>
+                                <h3 className="font-serif text-2xl mt-5">{p.title}</h3>
+                                <p className="mt-3 text-slate-400 leading-relaxed text-sm">{p.body}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* PROCESS TEASER */}
+            <section className="py-24 sm:py-32" data-testid="process-teaser-section">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12">
+                    <div className="md:col-span-5">
+                        <div className="eyebrow">{t("process.eyebrow")}</div>
+                        <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
+                            {t("process.teaser.title")}
+                        </h2>
+                        <p className="mt-5 text-slate-400 leading-relaxed">
+                            {t("process.teaser.body")}
+                        </p>
+                        <Link
+                            to="/manufacturing"
+                            className="mt-7 inline-flex items-center gap-2 text-kelp-400 hover:text-kelp-300 text-sm font-medium"
+                            data-testid="process-teaser-cta"
+                        >
+                            {t("cta.view_full_process")} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                    </div>
+                    <div className="md:col-span-7 grid grid-cols-2 gap-4">
+                        {[
+                            { k: "01", t: "Atlantic harvest", d: "Hand-cut, regulated beds" },
+                            { k: "05", t: "Controlled drying", d: "≤ 75 °C, vitamin-safe" },
+                            { k: "07", t: "Granulate sizing", d: "Soil, turf and blend grades" },
+                            { k: "09", t: "Final bagging", d: "1 t · 25 kg · 20 kg" },
+                        ].map((s) => (
+                            <div
+                                key={s.k}
+                                className="rounded-xl border border-white/10 bg-[#0A1628]/60 p-5"
+                                data-testid={`process-mini-${s.k}`}
+                            >
+                                <div className="font-mono text-xs text-kelp-400">{s.k}</div>
+                                <div className="font-serif text-xl mt-2 text-white">{s.t}</div>
+                                <div className="text-xs text-slate-400 mt-1 font-mono uppercase tracking-wider">{s.d}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* MARKET INSIGHTS TEASER */}
+            <section className="py-24 sm:py-32 border-y border-white/5 bg-[#040912]" data-testid="market-teaser-section">
+                <div className="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
+                    <div className="md:col-span-7">
+                        <div className="eyebrow">{t("market.eyebrow")}</div>
+                        <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">
+                            {t("market.title")}
+                        </h2>
+                        <p className="mt-5 text-slate-400 leading-relaxed max-w-xl">
+                            {t("market.body")}
+                        </p>
+                        <Link
+                            to="/market-insights"
+                            className="mt-7 inline-flex items-center gap-2 text-kelp-400 hover:text-kelp-300 text-sm font-medium"
+                            data-testid="market-teaser-cta"
+                        >
+                            {t("cta.open_market")} <BarChart3 className="h-4 w-4" />
+                        </Link>
+                    </div>
+                    <div className="md:col-span-5 rounded-2xl border border-white/10 p-6 bg-[#0A1628]/60">
+                        <div className="eyebrow mb-3">{t("market.segments_label")}</div>
+                        {BUYER_SEGMENTS.map((seg) => (
+                            <div key={seg.name} className="mt-3" data-testid={`segment-bar-${seg.name}`}>
+                                <div className="flex justify-between text-xs font-mono text-slate-400">
+                                    <span>{seg.name}</span>
+                                    <span>{seg.value} %</span>
+                                </div>
+                                <div className="h-1.5 bg-white/5 rounded-full mt-1 overflow-hidden">
+                                    <div className="h-full bg-kelp-500" style={{ width: `${seg.value * 2.5}%` }} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className="py-24 sm:py-32" data-testid="faq-section">
+                <div className="max-w-4xl mx-auto px-5 lg:px-8">
+                    <div className="eyebrow">{t("faq.eyebrow")}</div>
+                    <h2 className="font-serif text-4xl sm:text-5xl mt-3 leading-tight">{t("faq.title")}</h2>
+                    <Accordion type="single" collapsible className="mt-10" data-testid="faq-accordion">
+                        {FAQS.map((f, i) => (
+                            <AccordionItem key={i} value={`faq-${i}`} className="border-white/10">
+                                <AccordionTrigger
+                                    data-testid={`faq-trigger-${i}`}
+                                    className="font-serif text-xl text-left py-5 hover:no-underline"
+                                >
+                                    {f.q}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-slate-400 leading-relaxed pb-6">
+                                    {f.a}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
+            </section>
+
+            {/* CONTACT BAND */}
+            <section className="py-24 sm:py-32 border-t border-white/5 bg-gradient-to-b from-[#0A1628] to-[#050B14]" data-testid="contact-band">
+                <div className="max-w-5xl mx-auto px-5 lg:px-8 text-center">
+                    <div className="eyebrow">{t("contact.eyebrow")}</div>
+                    <h2 className="font-serif text-4xl sm:text-6xl mt-3 leading-tight">
+                        {t("contact.title")}
+                    </h2>
+                    <p className="mt-5 text-slate-400 max-w-2xl mx-auto">
+                        {t("contact.body")}
+                    </p>
+                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a
+                            href={`mailto:${BRAND.email}`}
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-kelp-600 hover:bg-kelp-500 text-white font-medium transition-colors"
+                            data-testid="contact-band-mail"
+                        >
+                            <Mail className="h-4 w-4" /> {BRAND.email}
+                        </a>
+                        <Link
+                            to="/contact"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-colors"
+                            data-testid="contact-band-cta"
+                        >
+                            {t("cta.open_contact")} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}
